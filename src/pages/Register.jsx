@@ -26,7 +26,50 @@ const Register = () => {
   }
   return (
     <div>
-      <h1></h1>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">Name</label>
+            <input
+              onChange={handleChange}
+              name="name"
+              type="text"
+              placeholder="Your beautiful name"
+              value={formValues.name}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              onChange={handleChange}
+              type="password"
+              name="password"
+              value={formValues.password}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              onChange={handleChange}
+              type="password"
+              name="confirmPassword"
+              value={formValues.confirmPassword}
+              required
+            />
+          </div>
+          <button
+            disabled={
+              !formValues.email ||
+              (!formValues.password &&
+                formValues.confirmPassword === formValues.password)
+            }
+          >
+            Log In
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
