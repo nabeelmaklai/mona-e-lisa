@@ -6,7 +6,7 @@ The digital art gallery platform provides a curated collection of digital artwor
 The building of the site will be a team effort. The team was composed of:
 
 - [Jassim]((https://github.com/9Jassim))
-- [Shaikha]((https://github.com/Shaikha277))
+- [Shaikha](https://github.com/Shaikha277)
 - [Nabeel](https://github.com/nabeelmaklai)
 
 ## Development Outline
