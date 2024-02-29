@@ -1,14 +1,13 @@
+import "./App.css"
+import Register from "./pages/Register"
 
-import './App.css'
-
-const App=()=>{
-  return (<div>
-
-    hi
-    
-  </div>
-    
-    )
+const App = () => {
+  return (
+    <div>
+      hi
+      <Register />
+    </div>
+  )
 }
 
 export default App
