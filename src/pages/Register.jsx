@@ -1,5 +1,5 @@
 import { useState } from "react"
-import axios from "axios"
+import { RegisterUser } from "../services/Auth"
 const Register = () => {
   const [formValues, setFormValues] = useState({
     name: "",
@@ -36,6 +36,17 @@ const Register = () => {
               type="text"
               placeholder="Your beautiful name"
               value={formValues.name}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              onChange={handleChange}
+              name="email"
+              type="email"
+              placeholder="Your Email"
+              value={formValues.email}
               required
             />
           </div>
