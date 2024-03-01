@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { RegisterUser } from "../services/Auth"
+import { useNavigate } from "react-router-dom"
+
 const Register = () => {
+  let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -23,13 +26,14 @@ const Register = () => {
       password: "",
       confirmPassword: "",
     })
+    navigate('/login')
   }
   return (
-    // <div className="signin col">
+   
       <div className="form">
         <form className="sub-form" onSubmit={handleSubmit}>
           <div className="upper-form">
-            {/* <h2 className="noidea">no idea</h2> */}
+            
             <label htmlFor="name"><b>Name :</b></label>
             <input
               onChange={handleChange}
@@ -78,11 +82,11 @@ const Register = () => {
                 formValues.confirmPassword === formValues.password)
             }
           >
-           <b>Login</b> 
+           <b>Register</b> 
           </button>
         </form>
       </div>
-    // </div>
+    
   )
 }
 export default Register
