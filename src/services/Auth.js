@@ -1,8 +1,8 @@
-import Client from "./api"
+import Client from './api'
 
 export const RegisterUser = async (data) => {
   try {
-    const response = await Client.post("/auth/register", data)
+    const response = await Client.post('/auth/register', data)
     console.log(response.data)
     return response.data
   } catch (error) {
@@ -11,9 +11,10 @@ export const RegisterUser = async (data) => {
 }
 export const LogInUser = async (data) => {
   try {
-    const response = await Client.post("/auth/login", data)
-    
-    localStorage.setItem("token", response.data.token)
+    console.log('reached here', data)
+    const response = await Client.post('/auth/login', data)
+
+    localStorage.setItem('token', response.data.token)
     return response.data.user
   } catch (error) {
     throw error
@@ -22,11 +23,11 @@ export const LogInUser = async (data) => {
 
 export const CheckSession = async () => {
   try {
-    
-    const response = await Client.get("/auth/session")
+    const response = await Client.get('/auth/session')
     return response.data
   } catch (error) {
     throw error
   }
 }
+
 
