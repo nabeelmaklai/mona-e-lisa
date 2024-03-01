@@ -1,3 +1,75 @@
 body {
-  margin:0;  
+  margin: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap");
+
+body {
+  /* font-family: 'Open Sans', sans-serif bold ; */
+
+  background-image: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+  /* margin: 10px; */
+}
+.sub-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  /* width: 40vw; */
+  /* height: 80vh; */
+  border-radius: 12px;
+  box-shadow: rgba(50, 50, 93, 0, 25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background-color: white;
+}
+.noidea {
+  margin: 1.5rem 0 2rem 0;
+  text-align: center;
+}
+label {
+  padding-left: 16px;
+  opacity: 0.75;
+}
+
+input {
+  display: flex;
+  border-radius: 50px;
+  border-style: none;
+  outline: none;
+  margin-top: 8px;
+  padding: 12px 24px;
+  width: 250px;
+  background-color: #eaeeed;
+}
+input:focus {
+  opacity: 0.7;
+}
+.loginBtn {
+  padding: 12px 48px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  background-color: #1a1b27;
+  font-weight: 600;
+  width: 50%;
+}
+.loginBtn:hover {
+  opacity: 0.7;
+}
+.loginBtn:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+  
+
 }

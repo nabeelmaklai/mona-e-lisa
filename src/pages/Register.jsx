@@ -25,11 +25,12 @@ const Register = () => {
     })
   }
   return (
-    <div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Name</label>
+    // <div className="signin col">
+      <div className="form">
+        <form className="sub-form" onSubmit={handleSubmit}>
+          <div className="upper-form">
+            {/* <h2 className="noidea">no idea</h2> */}
+            <label htmlFor="name"><b>Name :</b></label>
             <input
               onChange={handleChange}
               name="name"
@@ -37,10 +38,10 @@ const Register = () => {
               placeholder="Your beautiful name"
               value={formValues.name}
               required
-            />
+            /><br/>
           </div>
-          <div>
-            <label htmlFor="email">Email</label>
+          <div className="input-wrapper">
+            <label htmlFor="email"><b>Email :</b></label>
             <input
               onChange={handleChange}
               name="email"
@@ -48,40 +49,40 @@ const Register = () => {
               placeholder="Your Email"
               value={formValues.email}
               required
-            />
+            /><br/>
           </div>
-          <div>
-            <label htmlFor="password">Password</label>
+          <div className="input-wrapper">
+            <label htmlFor="password"><b>Password :</b></label>
             <input
               onChange={handleChange}
               type="password"
               name="password"
               value={formValues.password}
               required
-            />
+            /><br/>
           </div>
-          <div>
-            <label htmlFor="confirmPassword">Confirm Password</label>
+          <div className="input-wrapper">
+            <label htmlFor="confirmPassword"><b>Confirm Password :</b></label>
             <input
               onChange={handleChange}
               type="password"
               name="confirmPassword"
               value={formValues.confirmPassword}
               required
-            />
+            /><br/>
           </div>
-          <button
+          <button className="loginBtn"
             disabled={
               !formValues.email ||
               (!formValues.password &&
                 formValues.confirmPassword === formValues.password)
             }
           >
-            Log In
+           <b>Login</b> 
           </button>
         </form>
       </div>
-    </div>
+    // </div>
   )
 }
 export default Register
