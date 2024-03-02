@@ -8,7 +8,8 @@ const User = ({ user }) => {
   const [newArt, setNewArt] = useState({
     name: '',
     description: '',
-    img: ''
+    img: '',
+    userId: ''
   })
 
   useEffect(() => {
@@ -26,10 +27,12 @@ const User = ({ user }) => {
 
   const handleAddArt = async (event) => {
     event.preventDefault()
+    console.log('this is the add art console.log', user.id)
     await addArt({
       name: newArt.name,
       description: newArt.description,
-      img: newArt.img
+      img: newArt.img,
+      userId: user.id
     })
   }
 
@@ -38,7 +41,6 @@ const User = ({ user }) => {
       <div>hello {user.userName}</div>
       <div>Email: {user.email}</div>
       <div>
-        
         <form action="" onSubmit={handleAddArt}>
           <label htmlFor="name">Name</label>
           <input type="text" name="name" onChange={hadleChange} />
