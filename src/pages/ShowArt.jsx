@@ -1,14 +1,15 @@
-import Client from '../services/api'
+import { showArt } from '../services/Get'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 const ShowArt = () => {
   let { id } = useParams()
-  const [art, setArt] = useState()
+  const [art, setArt] = useState({})
 
   useEffect(() => {
     const getArt = async () => {
-      const response = await Client.get(`arts/${id}`)
-      setArt(response.data)
+      const response = await showArt(id)
+      console.log('response: ', response)
+      setArt(response)
     }
     getArt()
   }, [])
