@@ -8,7 +8,6 @@ const ShowArt = () => {
   useEffect(() => {
     const getArt = async () => {
       const response = await showArt(id)
-      console.log('response: ', response)
       setArt(response)
     }
     getArt()
@@ -20,6 +19,11 @@ const ShowArt = () => {
       <h4>{art.name}</h4>
       <img src={art.img} alt={art.userId.name} />
       <p>{art.description}</p>
+      <div className="comments-section">
+        {art.commentIds.map((comment) => (
+          <div>{comment.body}</div>
+        ))}
+      </div>
     </div>
   )
 }

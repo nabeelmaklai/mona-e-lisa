@@ -23,3 +23,15 @@ export const showArt = async (artId) => {
     console.log('error fetching stuff', error)
   }
 }
+
+export const showCollection = async (collectionId) => {
+  try {
+    const response = await Client.get(`/collections/${collectionId}`)
+    console.log('responce from /collections/:id', response.data)
+
+    return response.data
+  } catch (error) {
+    // throw error
+    console.log('error fetching stuff', error)
+  }
+}
