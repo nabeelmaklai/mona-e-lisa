@@ -3,7 +3,7 @@ import Client from './api'
 export const RegisterUser = async (data) => {
   try {
     const response = await Client.post('/auth/register', data)
-    console.log(response.data)
+
     return response.data
   } catch (error) {
     throw error
@@ -11,7 +11,7 @@ export const RegisterUser = async (data) => {
 }
 export const LogInUser = async (data) => {
   try {
-    console.log('reached here', data)
+
     const response = await Client.post('/auth/login', data)
 
     localStorage.setItem('token', response.data.token)
