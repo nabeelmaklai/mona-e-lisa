@@ -1,5 +1,16 @@
 import Client from './api'
 
+export const GetArt = async () => {
+  try {
+    const response = await Client.get('/arts')
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+
+
 export const ShowContent = async (userId) => {
   console.log(userId)
   try {
