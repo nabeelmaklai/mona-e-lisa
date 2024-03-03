@@ -7,8 +7,24 @@ import User from './pages/User'
 import ShowArt from './pages/ShowArt'
 import ShowCollection from './pages/ShowCollection'
 import { useEffect, useState } from 'react'
+import { CheckSession } from './services/Auth'
 const App = () => {
   const [user, setUser] = useState(null)
+
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+    console.log(user)
+  }
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      const checkTokenFunction = async () => {
+        await checkToken()
+      }
+      checkTokenFunction()
+    }
+  }, [user])
 
   return (
     <div>
