@@ -5,12 +5,17 @@ import { useEffect, useState } from "react"
 
 const Home = ({ user }) => {
   const [art, setArt] = useState([])
-  const showArt = async () => {
-    const response = await GetArt()
+  
+    useEffect(()=>{
+const showArt = async () => {
+  const response = await GetArt()
     console.log("this i sthe nhome function", response)
     setArt(response)
   }
-  showArt()
+    showArt()
+    } , [])
+  
+
   return user ? (
     <div>
       {art.map((art) => (
