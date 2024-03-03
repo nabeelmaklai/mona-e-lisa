@@ -43,9 +43,9 @@ const ShowArt = ({ user }) => {
   return art ? (
     <div className="show-art">
       <div className="add-to-collection">
-        <button onClick={showAddCollection}>ADD</button>
+        {user && <button onClick={showAddCollection}>ADD</button>}
 
-        {showCollection && <AddToCollection />}
+        {showCollection && <AddToCollection user={user} artId={id} />}
       </div>
       <h5>{art.userId.name}</h5>
       <h4>{art.name}</h4>
