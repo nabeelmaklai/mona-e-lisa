@@ -1,20 +1,20 @@
-import Login from './Login'
-import { ShowContent } from '../services/Get'
-import { useState, useEffect } from 'react'
-import { addArt } from '../services/Post'
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import AddArt from '../components/AddArt'
+import Login from "./Login"
+import { ShowContent } from "../services/Get"
+import { useState, useEffect } from "react"
+import { addArt } from "../services/Post"
+import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
+import AddArt from "../components/AddArt"
 
 const User = ({ user }) => {
   let { id } = useParams()
   const [addArtForm, setaddArtForm] = useState(false)
   const [art, setArt] = useState([])
   const [newArt, setNewArt] = useState({
-    name: '',
-    description: '',
-    img: '',
-    userId: ''
+    name: "",
+    description: "",
+    img: "",
+    userId: "",
   })
 
   useEffect(() => {
@@ -32,12 +32,12 @@ const User = ({ user }) => {
 
   const handleAddArt = async (event) => {
     event.preventDefault()
-    console.log('this is the add art console.log', user.id)
+    console.log("this is the add art console.log", user.id)
     await addArt({
       name: newArt.name,
       description: newArt.description,
       img: newArt.img,
-      userId: user.id
+      userId: user.id,
     })
   }
 
@@ -58,8 +58,8 @@ const User = ({ user }) => {
           <label htmlFor="img">Image</label>
           <input type="text" name="img" onChange={hadleChange} />
           <button>Submit</button>
-        </form> */}
-        {art.artIds.map((piece) => (
+        </form>
+        {art.artIds && art.artIds.map((piece) => (
           <Link to={`/arts/${piece._id}`}>
             <img src={piece.img} alt={piece.name} key={piece._id} />
           </Link>

@@ -46,13 +46,14 @@ const ShowArt = ({ user }) => {
           type="hidden"
           hidden
           ref={commentRef.userId}
-          value={art.userId._id}
+
+          value={user.id  }
         />
         <button onClick={addComment}>Comment</button>
         {art.commentIds.map((comment) => (
-          <div key={comment._id}>
-            {comment.userId.name}
-            {comment.body}
+          <div  className="commentDiv" key={comment._id} >
+          <b>{comment.userId.name }</b><br/>
+           {comment.body} 
           </div>
         ))}
       </div>
