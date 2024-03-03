@@ -20,6 +20,7 @@ const User = ({ user }) => {
   useEffect(() => {
     const getUserContent = async () => {
       const response = await ShowContent(id)
+      console.log(response.artIds)
       setArt(response)
     }
     getUserContent()
@@ -41,14 +42,15 @@ const User = ({ user }) => {
   }
 
   const handleAddArtButton = () => {
-    setaddArtForm(true)
+    addArtForm ? setaddArtForm(false) : setaddArtForm(true)
+    
   }
   return user ? (
     <div>
       <div>hello {user.userName}</div>
       <div>Email: {user.email}</div>
       <div>
-        <form action="" onSubmit={handleAddArt}>
+        {/* <form action="" onSubmit={handleAddArt}>
           <label htmlFor="name">Name</label>
           <input type="text" name="name" onChange={hadleChange} />
           <label htmlFor="description">Description</label>
@@ -56,13 +58,13 @@ const User = ({ user }) => {
           <label htmlFor="img">Image</label>
           <input type="text" name="img" onChange={hadleChange} />
           <button>Submit</button>
-        </form>
+        </form> */}
         {art.artIds.map((piece) => (
           <Link to={`/arts/${piece._id}`}>
             <img src={piece.img} alt={piece.name} key={piece._id} />
           </Link>
         ))}
-        <button onClick={handleAddArtButton}>something</button>
+        <button onClick={handleAddArtButton}>Add Art</button>
         {addArtForm && (
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
         )}
