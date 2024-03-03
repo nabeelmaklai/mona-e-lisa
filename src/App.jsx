@@ -24,7 +24,7 @@ const App = () => {
       }
       checkTokenFunction()
     }
-  }, [user])
+  }, [])
 
   return (
     <div>
@@ -33,7 +33,10 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/user/:id" element={<User user={user} />} />
+          <Route
+            path="/user/:id"
+            element={<User user={user} checkToken={checkToken} />}
+          />
           <Route path="/arts/:id" element={<ShowArt />} />
           <Route path="/collections/:id" element={<ShowCollection />} />
         </Routes>
