@@ -2,12 +2,14 @@ import { Link } from "react-router-dom"
 
 const Nav = ({user, handleLogOut}) => {
   let userOptions
+  // console.log(user.id);
   if (user) {
+
     userOptions = (
       <header>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/user/:id">profile</Link>
+        <Link to={`/user/${user.id}`}>profile</Link>
         <Link onClick={handleLogOut} to="/">
           Sign Out
         </Link>
@@ -22,7 +24,7 @@ const Nav = ({user, handleLogOut}) => {
   const publicOptions = (
       <nav>
       <Link to="/">Home</Link>
-      <Link to="/user/:id">profile</Link>
+      {/* <Link to="/user/:id">profile</Link> */}
       <Link to="/login">login</Link>
       <Link to="/register">Register</Link>
       </nav>
