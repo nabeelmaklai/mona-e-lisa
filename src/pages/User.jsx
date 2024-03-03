@@ -8,7 +8,7 @@ import AddArt from '../components/AddArt'
 
 const User = ({ user }) => {
   let { id } = useParams()
-  const [addArtForm, setaddArtForm] = useState(false)
+
   const [art, setArt] = useState([])
   const [newArt, setNewArt] = useState({
     name: '',
@@ -21,6 +21,7 @@ const User = ({ user }) => {
     const getUserContent = async () => {
       const response = await ShowContent(id)
       setArt(response)
+      console.log(response.artIds)
     }
     getUserContent()
   }, [])

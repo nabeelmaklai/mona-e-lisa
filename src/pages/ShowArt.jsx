@@ -42,12 +42,7 @@ const ShowArt = ({ user }) => {
       <p>{art.description}</p>
       <div className="comments-section">
         <input type="text" ref={commentRef.body} />
-        <input
-          type="hidden"
-          hidden
-          ref={commentRef.userId}
-          value={art.userId._id}
-        />
+        <input type="hidden" hidden ref={commentRef.userId} value={user.id} />
         <button onClick={addComment}>Comment</button>
         {art.commentIds.map((comment) => (
           <div key={comment._id}>
