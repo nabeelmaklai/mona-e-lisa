@@ -17,6 +17,7 @@ const User = ({ user }) => {
       const response = await ShowContent(user.id)
       console.log('This is the stuff response in Users', response)
       setArt(response)
+      console.log(response.artIds[0])
     }
     getUserContent()
   }, [])
