@@ -9,17 +9,16 @@ import ShowCollection from './pages/ShowCollection'
 import { useEffect, useState } from 'react'
 import Home from './pages/Home'
 import { CheckSession } from './services/Auth'
+import AddCollection from './components/AddCollection'
 const App = () => {
   const [user, setUser] = useState(null)
   const handleLogOut = () => {
-    
     setUser(null)
     localStorage.clear()
   }
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
-
   }
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -36,7 +35,7 @@ const App = () => {
       <Nav user={user} handleLogOut={handleLogOut} />
       <main>
         <Routes>
-        <Route path="/" element={<Home  user={user} />} />
+          <Route path="/" element={<Home user={user} />} />
 
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
@@ -46,6 +45,7 @@ const App = () => {
           />
           <Route path="/arts/:id" element={<ShowArt user={user} />} />
           <Route path="/collections/:id" element={<ShowCollection />} />
+          <Route path="/collections" element={<AddCollection user={user} />} />
         </Routes>
       </main>
     </div>
