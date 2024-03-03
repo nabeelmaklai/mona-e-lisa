@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react'
 import { addArt } from '../services/Post'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import AddArt from '../components/AddArt'
 
 const User = ({ user }) => {
   let { id } = useParams()
-
+  const [addArtForm, setaddArtForm] = useState(false)
   const [art, setArt] = useState([])
   const [newArt, setNewArt] = useState({
     name: '',
@@ -20,7 +21,6 @@ const User = ({ user }) => {
     const getUserContent = async () => {
       const response = await ShowContent(id)
       setArt(response)
-      console.log(response.artIds[1])
     }
     getUserContent()
   }, [])
@@ -40,6 +40,9 @@ const User = ({ user }) => {
     })
   }
 
+  const handleAddArtButton = () => {
+    setaddArtForm(true)
+  }
   return user ? (
     <div>
       <div>hello {user.userName}</div>
@@ -59,6 +62,10 @@ const User = ({ user }) => {
             <img src={piece.img} alt={piece.name} key={piece._id} />
           </Link>
         ))}
+        <button onClick={handleAddArtButton}>something</button>
+        {addArtForm && (
+          <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
+        )}
       </div>
     </div>
   ) : (
