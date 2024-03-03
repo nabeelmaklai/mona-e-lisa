@@ -25,14 +25,14 @@ const ShowArt = ({ user }) => {
 
   return art ? (
     <div className="show-art">
-      <h5>{art.userId.name}</h5>
+      {/* <h5>{art.userId.name}</h5> */}
       <h4>{art.name}</h4>
-      <img src={art.img} alt={art.userId.name} />
+      <img src={art.img} alt="{art.userId.name}" />
       <p>{art.description}</p>
       <div className="comments-section">
         <input type="text" ref={commentRef.body} />
         <button onClick={addComment}>Comment</button>
-        {art.commentIds.map((comment) => (
+        {/* {art.commentIds.map((comment) => (
           <div>{comment.body}</div>
         ))}
       </div>
