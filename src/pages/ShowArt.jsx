@@ -2,10 +2,12 @@ import { showArt } from '../services/Get'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import Client from '../services/api'
+import AddToCollection from '../components/AddToCollection'
 const ShowArt = ({ user }) => {
   let { id } = useParams()
   const [art, setArt] = useState(null)
   const [commented, setCommented] = useState(false)
+  const [showCollection, setShowCollection] = useState(false)
   let commentRef = {
     body: useRef(null),
     artId: id,
@@ -34,8 +36,17 @@ const ShowArt = ({ user }) => {
     commentRef.userId.current.value = ''
   }
 
+  const showAddCollection = () => {
+    showCollection ? setShowCollection(false) : setShowCollection(true)
+  }
+
   return art ? (
     <div className="show-art">
+      <div className="add-to-collection">
+        {user && <button onClick={showAddCollection}>ADD</button>}
+
+        {showCollection && <AddToCollection user={user} artId={id} />}
+      </div>
       <h5>{art.userId.name}</h5>
       <h4>{art.name}</h4>
       <img src={art.img} alt="{art.userId.name}" />
