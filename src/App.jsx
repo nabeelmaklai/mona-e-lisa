@@ -24,7 +24,7 @@ const App = () => {
       }
       checkTokenFunction()
     }
-  }, [user])
+  }, [])
 
   return (
     <div>
