@@ -32,7 +32,7 @@ const ShowArt = ({ user }) => {
       <div className="comments-section">
         <input type="text" ref={commentRef.body} />
         <button onClick={addComment}>Comment</button>
-        {/* {art.commentIds.map((comment) => (
+        {art.commentIds.map((comment) => (
           <div>{comment.body}</div>
         ))}
       </div>
