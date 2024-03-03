@@ -8,8 +8,8 @@ import AddArt from "../components/AddArt"
 
 const User = ({ user }) => {
   let { id } = useParams()
-  const [addArtForm, setaddArtForm] = useState(false)
   const [art, setArt] = useState([])
+  const [addArtForm, setaddArtForm] = useState(false)
   const [newArt, setNewArt] = useState({
     name: "",
     description: "",
