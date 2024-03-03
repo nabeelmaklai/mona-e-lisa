@@ -9,3 +9,12 @@ export const addArt = async (data) => {
     console.log(error)
   }
 }
+export const createCollection = async (data) => {
+  console.log(data)
+  try {
+    const response = await Client.post('/collections', data)
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+}
