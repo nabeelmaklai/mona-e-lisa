@@ -2,8 +2,12 @@ import Login from './Login'
 import { ShowContent } from '../services/Get'
 import { useState, useEffect } from 'react'
 import { addArt } from '../services/Post'
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const User = ({ user }) => {
+  let { id } = useParams()
+
   const [art, setArt] = useState([])
   const [newArt, setNewArt] = useState({
     name: '',
@@ -14,9 +18,9 @@ const User = ({ user }) => {
 
   useEffect(() => {
     const getUserContent = async () => {
-      const response = await ShowContent(user.id)
-      console.log('This is the stuff response in Users', response)
+      const response = await ShowContent(id)
       setArt(response)
+      console.log(response.artIds[1])
     }
     getUserContent()
   }, [])
@@ -36,7 +40,7 @@ const User = ({ user }) => {
     })
   }
 
-  return (
+  return user ? (
     <div>
       <div>hello {user.userName}</div>
       <div>Email: {user.email}</div>
@@ -50,8 +54,15 @@ const User = ({ user }) => {
           <input type="text" name="img" onChange={hadleChange} />
           <button>Submit</button>
         </form>
+        {art.artIds.map((piece) => (
+          <Link to={`/arts/${piece._id}`}>
+            <img src={piece.img} alt={piece.name} key={piece._id} />
+          </Link>
+        ))}
       </div>
     </div>
+  ) : (
+    <></>
   )
 }
 
