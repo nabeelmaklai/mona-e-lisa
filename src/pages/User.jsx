@@ -57,11 +57,12 @@ const User = ({ user }) => {
           <input type="text" name="img" onChange={hadleChange} />
           <button>Submit</button>
         </form>
-        {art.artIds && art.artIds.map((piece) => (
-          <Link to={`/arts/${piece._id}`}>
-            <img src={piece.img} alt={piece.name} key={piece._id} />
-          </Link>
-        ))}
+        {art.artIds &&
+          art.artIds.map((piece) => (
+            <Link to={`/arts/${piece._id}`}>
+              <img src={piece.img} alt={piece.name} key={piece._id} />
+            </Link>
+          ))}
         <button onClick={handleAddArtButton}>something</button>
         {addArtForm && (
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
