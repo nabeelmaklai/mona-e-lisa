@@ -13,8 +13,12 @@ const Home = ({ user }) => {
   showArt()
   return user ? (
     <div>
-      {art.map(() => (
-        <h1>{user.userName}</h1>
+      {art.map((art) => (
+        <div>
+        <h1>{art.userId.name}</h1>
+        <img src={art.img} alt={art.name} />
+        </div>
+
       ))}
     </div>
   ) : (

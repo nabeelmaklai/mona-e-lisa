@@ -3,12 +3,13 @@
 body {
   /* font-family: 'Open Sans', sans-serif bold ; */
   margin: 0;
-
+/* 
   background-image: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%);
   height: 100vh;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: aquamarine;
 }
 .form {
   display: flex;
@@ -104,4 +105,12 @@ header nav a {
   padding: 16px;
   font-size: 20px;
   font-family: DevilCandle;
+}
+img {
+  width: 30%;
+  aspect-ratio: 5/4;
+  object-fit:contain;
+  display: flex;
+
+  
 }
