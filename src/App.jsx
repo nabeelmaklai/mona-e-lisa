@@ -37,7 +37,7 @@ const App = () => {
             path="/user/:id"
             element={<User user={user} checkToken={checkToken} />}
           />
-          <Route path="/arts/:id" element={<ShowArt />} />
+          <Route path="/arts/:id" element={<ShowArt user={user} />} />
           <Route path="/collections/:id" element={<ShowCollection />} />
         </Routes>
       </main>
