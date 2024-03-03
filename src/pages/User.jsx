@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { addArt } from '../services/Post'
 
 const User = ({ user }) => {
+  console.log(user)
   const [art, setArt] = useState([])
   const [newArt, setNewArt] = useState({
     name: '',
