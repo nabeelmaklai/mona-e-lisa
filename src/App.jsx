@@ -7,10 +7,15 @@ import User from './pages/User'
 import ShowArt from './pages/ShowArt'
 import ShowCollection from './pages/ShowCollection'
 import { useEffect, useState } from 'react'
+import Home from './pages/Home'
 import { CheckSession } from './services/Auth'
 const App = () => {
   const [user, setUser] = useState(null)
-
+  const handleLogOut = () => {
+    
+    setUser(null)
+    localStorage.clear()
+  }
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -28,9 +33,11 @@ const App = () => {
 
   return (
     <div>
-      <Nav />
+      <Nav user={user} handleLogOut={handleLogOut} />
       <main>
         <Routes>
+        <Route path="/" element={<Home user={user} />} />
+
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           <Route

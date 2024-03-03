@@ -1,17 +1,15 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap");
-
-  
 
 body {
   /* font-family: 'Open Sans', sans-serif bold ; */
   margin: 0;
-  
+/* 
   background-image: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%);
   height: 100vh;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: aquamarine;
 }
 .form {
   display: flex;
@@ -54,7 +52,7 @@ input:focus {
   opacity: 0.7;
 }
 .loginBtn {
-  padding: 12px 48px ;
+  padding: 12px 48px;
   margin-top: 10px;
   border-radius: 50px;
   color: white;
@@ -68,9 +66,51 @@ input:focus {
 .loginBtn:hover {
   opacity: 0.7;
 }
-.loginBtn:disabled{
+.loginBtn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
-  
+}
+.Nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #333;
+  padding: 10px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
+header {
+  display: flex;
+  justify-content:flex-start;
+  /* justify-content: space-between; */
+
+  align-items: center;
+  height: 10vh;
+  background: linear-gradient(to top, rgb(12, 0, 0), #000000);
+}
+header nav a {
+  color: white;
+
+  /* justify-content: space-between; */
+  /* color: #eee; */
+  text-decoration: none;
+  /* display: inline-block; */
+  margin: 0;
+  padding: 0;
+  padding: 16px;
+  font-size: 20px;
+  font-family: DevilCandle;
+}
+img {
+  width: 30%;
+  aspect-ratio: 5/4;
+  object-fit:contain;
+  display: flex;
+
+  
 }
