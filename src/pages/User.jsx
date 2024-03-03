@@ -8,8 +8,8 @@ import AddArt from "../components/AddArt"
 
 const User = ({ user }) => {
   let { id } = useParams()
-
   const [art, setArt] = useState([])
+  const [addArtForm, setaddArtForm] = useState(false)
   const [newArt, setNewArt] = useState({
     name: "",
     description: "",
@@ -58,6 +58,7 @@ const User = ({ user }) => {
           </Link>
         ))}
         <button onClick={handleAddArtButton}>Add Art</button>
+
         {addArtForm && (
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
         )}
