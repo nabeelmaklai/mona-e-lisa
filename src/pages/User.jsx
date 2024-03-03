@@ -2,8 +2,10 @@ import Login from './Login'
 import { ShowContent } from '../services/Get'
 import { useState, useEffect } from 'react'
 import { addArt } from '../services/Post'
+import { useParams } from 'react-router-dom'
 
 const User = ({ user }) => {
+  let { id } = useParams()
   console.log(user)
   const [art, setArt] = useState([])
   const [newArt, setNewArt] = useState({
@@ -15,7 +17,7 @@ const User = ({ user }) => {
 
   useEffect(() => {
     const getUserContent = async () => {
-      const response = await ShowContent(user.id)
+      const response = await ShowContent(id)
       console.log('This is the stuff response in Users', response)
       setArt(response)
       console.log(response.artIds[0])
@@ -38,7 +40,7 @@ const User = ({ user }) => {
     })
   }
 
-  return (
+  return user ? (
     <div>
       <div>hello {user.userName}</div>
       <div>Email: {user.email}</div>
@@ -54,6 +56,8 @@ const User = ({ user }) => {
         </form>
       </div>
     </div>
+  ) : (
+    <></>
   )
 }
 
