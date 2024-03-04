@@ -10,6 +10,8 @@ const ShowArt = ({ user }) => {
   const [commented, setCommented] = useState(false)
   const [showCollection, setShowCollection] = useState(false)
   const [deleteCommentId, setDeleteCommentId] = useState(null)
+  const [deleted, setDeleted] = useState(false)
+
   let commentRef = {
     body: useRef(null),
     artId: id,
@@ -20,7 +22,9 @@ const ShowArt = ({ user }) => {
     const getArt = async () => {
       const response = await showArt(id)
       setArt(response)
+      // console.log(response._id)
       setCommented(false)
+      setDeleted(false)
     }
     getArt()
   }, [commented])
@@ -49,7 +53,9 @@ const ShowArt = ({ user }) => {
     e.preventDefault()
     const commentToDelete = `/arts/${id}/comments/${deleteCommentId}`
     // console.log('This is the handleDeleteComment', commentToDelete)
-    await Client.delete(commentToDelete, { data: user })
+    await Client.delete(commentToDelete)
+    setDeleted(true)
+    // setCommented(true)
   }
 
   return art ? (
@@ -60,6 +66,8 @@ const ShowArt = ({ user }) => {
         {showCollection && <AddToCollection user={user} artId={id} />}
       </div>
       <h5>{art.userId.name}</h5>
+      <h5>This{art.userIds}hfsdklhfks</h5>
+
       <h4>{art.name}</h4>
       <img src={art.img} alt="{art.userId.name}" />
       <p>{art.description}</p>
@@ -88,15 +96,31 @@ const ShowArt = ({ user }) => {
             <b>{comment.userId.name}</b>
             <br />
             {comment.body}
-            <form onSubmit={handleDeleteComment}>
+
+            {user ? (
+              comment.userId._id === user.id && (
+                <form onSubmit={handleDeleteComment}>
+                  <button
+                    onClick={() => {
+                      handleDeleteClick(comment._id)
+                    }}
+                  >
+                    Delete
+                  </button>
+                </form>
+              )
+            ) : (
+              <></>
+            )}
+
+            {/* <form onSubmit={handleDeleteComment}>
               <button
                 onClick={() => {
                   handleDeleteClick(comment._id)
                 }}
               >
                 Delete
-              </button>
-            </form>
+              </button> */}
           </div>
         ))}
       </div>
