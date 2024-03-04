@@ -15,19 +15,19 @@ const Home = ({ user }) => {
     showArt()
   }, [])
 
-  return user ? (
-    <div>
+  return (
+    <div className="grid-container">
       {art.map((art) => (
         <div>
           <h1>{art.userId.name}</h1>
           <Link to={`/arts/${art._id}`}>
+           
             <img src={art.img} alt={art.name} />
           </Link>
         </div>
       ))}
-    </div>
-  ) : (
-    <></>
-  )
+    </div>)
+  
+  
 }
 export default Home
