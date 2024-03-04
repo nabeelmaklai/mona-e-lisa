@@ -9,6 +9,8 @@ const ShowArt = ({ user }) => {
   const [commented, setCommented] = useState(false)
   const [showCollection, setShowCollection] = useState(false)
   const [deleteCommentId, setDeleteCommentId] = useState(null)
+  const [deleted, setDeleted] = useState(false)
+
   let commentRef = {
     body: useRef(null),
     artId: id,
@@ -20,9 +22,11 @@ const ShowArt = ({ user }) => {
       const response = await showArt(id)
       setArt(response)
       setCommented(false)
+      setDeleted(false)
     }
+
     getArt()
-  }, [commented])
+  }, [commented, deleted])
 
   const addComment = async () => {
     const comment = {
@@ -48,7 +52,9 @@ const ShowArt = ({ user }) => {
     e.preventDefault()
     const commentToDelete = `/arts/${id}/comments/${deleteCommentId}`
     // console.log('This is the handleDeleteComment', commentToDelete)
-    await Client.delete(commentToDelete, { data: user })
+    await Client.delete(commentToDelete)
+    setDeleted(true)
+    setCommented(true)
   }
 
   return art ? (
