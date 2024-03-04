@@ -27,7 +27,7 @@ const User = ({ user }) => {
       setProfile(response)
     }
     getUserContent()
-  }, [])
+  }, [id])
 
   const hadleChange = (event) => {
     setNewArt({ ...newArt, [event.target.name]: event.target.value })
