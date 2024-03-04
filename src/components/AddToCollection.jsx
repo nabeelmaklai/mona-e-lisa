@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 const AddToCollection = ({ user, artId }) => {
   const [collections, setCollections] = useState([])
   const [added, setAdded] = useState(false)
+  const [collection, setCollecton] = useState(null)
   useEffect(() => {
     const getCollection = async () => {
       const response = await Client.get(`/users/${user.id}/collections`)
@@ -15,14 +16,18 @@ const AddToCollection = ({ user, artId }) => {
   }, [added])
 
   const add = async (event) => {
-    await Client.put(`collections/${event.target.value}/add`, {
+    await Client.put(`collections/${collection}/add`, {
       artId: artId
     })
     setAdded(true)
   }
+
+  const selectCollection = (event) => {
+    setCollecton(event.target.value)
+  }
   return (
     <div>
-      <select name="collections">
+      <select onChange={selectCollection} name="collections">
         <option value="" selected disabled>
           collections
         </option>
