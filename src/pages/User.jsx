@@ -5,6 +5,7 @@ import { addArt } from '../services/Post'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import AddArt from '../components/AddArt'
+import FollowButton from '../components/FollowButton'
 
 const User = ({ user }) => {
   let { id } = useParams()
@@ -22,7 +23,6 @@ const User = ({ user }) => {
   useEffect(() => {
     const getUserContent = async () => {
       const response = await ShowContent(id)
-      console.log(response)
       setArt(response.artIds)
       setProfile(response)
     }
@@ -56,6 +56,11 @@ const User = ({ user }) => {
     <div>
       <div>{profile.name}</div>
       <div>Email: {profile.email}</div>
+      {user ? (
+        user.id !== id && <FollowButton user={user} profileId={id} />
+      ) : (
+        <></>
+      )}
       <div>
         {art &&
           art.map((piece) => (
