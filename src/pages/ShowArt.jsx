@@ -21,12 +21,12 @@ const ShowArt = ({ user }) => {
     const getArt = async () => {
       const response = await showArt(id)
       setArt(response)
+      // console.log(response._id)
       setCommented(false)
       setDeleted(false)
     }
-
     getArt()
-  }, [commented, deleted])
+  }, [commented])
 
   const addComment = async () => {
     const comment = {
@@ -54,7 +54,7 @@ const ShowArt = ({ user }) => {
     // console.log('This is the handleDeleteComment', commentToDelete)
     await Client.delete(commentToDelete)
     setDeleted(true)
-    setCommented(true)
+    // setCommented(true)
   }
 
   return art ? (
@@ -65,12 +65,14 @@ const ShowArt = ({ user }) => {
         {showCollection && <AddToCollection user={user} artId={id} />}
       </div>
       <h5>{art.userId.name}</h5>
+      <h5>This{art.userIds}hfsdklhfks</h5>
+
       <h4>{art.name}</h4>
       <img src={art.img} alt="{art.userId.name}" />
       <p>{art.description}</p>
       <div className="comments-section">
         <input type="text" ref={commentRef.body} />
-        <input type="hidden" hidden ref={commentRef.userId} value={user.id} />
+        <input type="hidden" hidden ref={commentRef.userId} value={user?.id} />
 
         <section>
           <button className="commentBtn" onClick={addComment}>
@@ -83,15 +85,31 @@ const ShowArt = ({ user }) => {
             <b>{comment.userId.name}</b>
             <br />
             {comment.body}
-            <form onSubmit={handleDeleteComment}>
+
+            {user ? (
+              comment.userId._id === user.id && (
+                <form onSubmit={handleDeleteComment}>
+                  <button
+                    onClick={() => {
+                      handleDeleteClick(comment._id)
+                    }}
+                  >
+                    Delete
+                  </button>
+                </form>
+              )
+            ) : (
+              <></>
+            )}
+
+            {/* <form onSubmit={handleDeleteComment}>
               <button
                 onClick={() => {
                   handleDeleteClick(comment._id)
                 }}
               >
                 Delete
-              </button>
-            </form>
+              </button> */}
           </div>
         ))}
       </div>
