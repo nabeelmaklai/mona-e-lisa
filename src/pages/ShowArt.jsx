@@ -8,6 +8,7 @@ const ShowArt = ({ user }) => {
   const [art, setArt] = useState(null)
   const [commented, setCommented] = useState(false)
   const [showCollection, setShowCollection] = useState(false)
+  const [deleteCommentId, setDeleteCommentId] = useState(null)
   let commentRef = {
     body: useRef(null),
     artId: id,
@@ -39,6 +40,16 @@ const ShowArt = ({ user }) => {
   const showAddCollection = () => {
     showCollection ? setShowCollection(false) : setShowCollection(true)
   }
+  const handleDeleteClick = (event) => {
+    setDeleteCommentId(event)
+    console.log('this is the comment ID', event)
+  }
+  const handleDeleteComment = async (e) => {
+    e.preventDefault()
+    const commentToDelete = `/arts/${id}/comments/${deleteCommentId}`
+    // console.log('This is the handleDeleteComment', commentToDelete)
+    await Client.delete(commentToDelete, { data: user })
+  }
 
   return art ? (
     <div className="show-art">
@@ -55,14 +66,26 @@ const ShowArt = ({ user }) => {
         <input type="text" ref={commentRef.body} />
         <input type="hidden" hidden ref={commentRef.userId} value={user.id} />
 
-        <section >
-        <button className='commentBtn'  onClick={addComment}>Comment</button></section >
+        <section>
+          <button className="commentBtn" onClick={addComment}>
+            Comment
+          </button>
+        </section>
 
         {art.commentIds.map((comment) => (
           <div className="commentDiv" key={comment._id}>
             <b>{comment.userId.name}</b>
             <br />
             {comment.body}
+            <form onSubmit={handleDeleteComment}>
+              <button
+                onClick={() => {
+                  handleDeleteClick(comment._id)
+                }}
+              >
+                Delete
+              </button>
+            </form>
           </div>
         ))}
       </div>
