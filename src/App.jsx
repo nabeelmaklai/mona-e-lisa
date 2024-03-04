@@ -46,6 +46,7 @@ const App = () => {
           <Route path="/arts/:id" element={<ShowArt user={user} />} />
           <Route path="/collections/:id" element={<ShowCollection />} />
           <Route path="/collections" element={<AddCollection user={user} />} />
+          <Route path="/arts/:id/edit" element={<EditArt user={user}/>} />
         </Routes>
       </main>
     </div>

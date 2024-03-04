@@ -1,5 +1,5 @@
 import { showArt } from '../services/Get'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import Client from '../services/api'
 import AddToCollection from '../components/AddToCollection'
@@ -10,6 +10,7 @@ const ShowArt = ({ user }) => {
   const [showCollection, setShowCollection] = useState(false)
   const [deleteCommentId, setDeleteCommentId] = useState(null)
   const [deleted, setDeleted] = useState(false)
+  navigate=useNavigate()
 
   let commentRef = {
     body: useRef(null),
