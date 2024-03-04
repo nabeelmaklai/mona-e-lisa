@@ -9,8 +9,6 @@ export const GetArt = async () => {
   }
 }
 
-
-
 export const ShowContent = async (userId) => {
   console.log(userId)
   try {
