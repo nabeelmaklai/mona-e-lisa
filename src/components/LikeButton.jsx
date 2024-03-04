@@ -19,7 +19,7 @@ const LikeButton = ({ user, art }) => {
     const index = art.likes.findIndex((id) => {
       return id === user.id
     })
-    user.following.splice(index, 1)
+    art.likes.splice(index, 1)
     setLiked(false)
   }
 
