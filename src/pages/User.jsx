@@ -10,6 +10,7 @@ const User = ({ user }) => {
   let { id } = useParams()
   const [art, setArt] = useState([])
   const [addArtForm, setaddArtForm] = useState(false)
+  const [profile, setProfile] = useState({})
   const [newArt, setNewArt] = useState({
     name: '',
     description: '',
@@ -21,12 +22,12 @@ const User = ({ user }) => {
   useEffect(() => {
     const getUserContent = async () => {
       const response = await ShowContent(id)
-      console.log(response.artIds)
-      setArt(response)
-      console.log(response.artIds)
+      console.log(response)
+      setArt(response.artIds)
+      setProfile(response)
     }
     getUserContent()
-  }, [])
+  }, [id])
 
   const hadleChange = (event) => {
     setNewArt({ ...newArt, [event.target.name]: event.target.value })
@@ -34,7 +35,7 @@ const User = ({ user }) => {
 
   const handleAddArt = async (event) => {
     event.preventDefault()
-   
+
     await addArt({
       name: newArt.name,
       description: newArt.description,
@@ -51,28 +52,41 @@ const User = ({ user }) => {
     navigate('/collections')
   }
 
-  return user ? (
+  return (
     <div>
-      <div>hello {user.userName}</div>
-      <div>Email: {user.email}</div>
+      <div>{profile.name}</div>
+      <div>Email: {profile.email}</div>
       <div>
-        {art.artIds &&
-          art.artIds.map((piece) => (
-            <Link to={`/arts/${piece._id}`}>
+        {art &&
+          art.map((piece) => (
+            <Link key={piece._id} to={`/arts/${piece._id}`}>
               <img src={piece.img} alt={piece.name} key={piece._id} />
             </Link>
           ))}
-        <button onClick={handleAddArtButton}>Add Art</button>
 
-        <button onClick={navigateToAddCollection}>Create a Collection</button>
+        {user ? (
+          user.id === id && (
+            <button onClick={handleAddArtButton}>Add Art</button>
+          )
+        ) : (
+          <></>
+        )}
+
+        {user ? (
+          user.id === id && (
+            <button onClick={navigateToAddCollection}>
+              Create a Collection
+            </button>
+          )
+        ) : (
+          <></>
+        )}
 
         {addArtForm && (
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
         )}
       </div>
     </div>
-  ) : (
-    <></>
   )
 }
 
