@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import Client from '../services/api'
 import AddToCollection from '../components/AddToCollection'
+import LikeButton from '../components/LikeButton'
 const ShowArt = ({ user }) => {
   let { id } = useParams()
   const [art, setArt] = useState(null)
@@ -70,15 +71,25 @@ const ShowArt = ({ user }) => {
       <h4>{art.name}</h4>
       <img src={art.img} alt="{art.userId.name}" />
       <p>{art.description}</p>
+      {user && <LikeButton user={user} art={art} />}
       <div className="comments-section">
-        <input type="text" ref={commentRef.body} />
-        <input type="hidden" hidden ref={commentRef.userId} value={user?.id} />
-
-        <section>
-          <button className="commentBtn" onClick={addComment}>
-            Comment
-          </button>
-        </section>
+        {user && (
+          <div>
+            {' '}
+            <input type="text" ref={commentRef.body} />
+            <input
+              type="hidden"
+              hidden
+              ref={commentRef.userId}
+              value={user.id}
+            />
+            <section>
+              <button className="commentBtn" onClick={addComment}>
+                Comment
+              </button>
+            </section>
+          </div>
+        )}
 
         {art.commentIds.map((comment) => (
           <div className="commentDiv" key={comment._id}>
