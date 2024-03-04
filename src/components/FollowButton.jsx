@@ -18,7 +18,6 @@ const FollowButton = ({ user, profileId }) => {
 
   const unfollow = async () => {
     await Client.put(`/users/${user.id}/unfollow`, { userId: profileId })
-    console.log('unfollow')
     const index = user.following.findIndex((id) => {
       return id === profileId
     })
