@@ -1,6 +1,7 @@
 html {
   background-color: black;
   color: white;
+  
 }
 .homepage {
   display: flex;
@@ -42,10 +43,12 @@ html {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.128);
 }
-.sidenav__button > span {
+.sidenav__button > span a {
   font-size: 18px;
   font-weight: bolder;
   margin-left: 10px;
+  text-decoration: none;
+  color: white;
 }
 .HomeArtImgs {
   width: 100%;
@@ -86,10 +89,45 @@ html {
   align-items: center;
   font-weight: bolder;
 }
+ .h2 {
+  font-weight: bolder;
+  margin-left: 10px;
+  color: white;
+
+}
 .post {
   width: 550px;
   margin: 30px 40px 50px;
 }
+.post a {
+  text-decoration: none;
+
+}
 .AppDiv {
   display: flex;
+}
+.sidenav{
+  position:fixed;
+
+}
+.aboveSidenav{
+  /* display: flex; */
+  width: 15vw;
+
+
+}
+.profileImgDiv{
+  /* display: flex; */
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+
+
+  
+}
+.ProfileImgs{
+  
+  flex:0 0 25%; 
+   margin :0 0.5rem 1rem 0;
+
 }

@@ -109,7 +109,7 @@ const ShowArt = ({ user }) => {
 
       <img src={art.img} alt="{art.userId.name}" />
       {/* <p>hello{art.userId._id}</p> */}
-      <p>{art.description}</p>
+      <p><b>{art.userId.name}</b> {art.description}</p>
 
       {user && <LikeButton user={user} art={art} />}
       <div className="comments-section">
