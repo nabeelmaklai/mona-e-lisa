@@ -95,6 +95,11 @@ html {
   color: white;
 
 }
+
+/* .AppDiv>main{
+  width: 8vw;
+  background-color: 
+} */
 .post {
   width: 550px;
   margin: 30px 40px 50px;
@@ -112,22 +117,52 @@ html {
 }
 .aboveSidenav{
   /* display: flex; */
-  width: 15vw;
+  width: 180px;
 
 
 }
 .profileImgDiv{
   /* display: flex; */
-  width: 30%;
+  /* width: 30%; */
   display: flex;
   flex-wrap: wrap;
-
+  gap: 10px;
+  margin-top: 30px;
 
   
 }
-.ProfileImgs{
-  
-  flex:0 0 25%; 
-   margin :0 0.5rem 1rem 0;
+.profileImgDiv> a{
 
+  width : 30% ;
+  aspect-ratio: 1;
+}
+
+.ProfileImgs{
+  /* width:100%; */
+  height: 100%;
+  /* aspect-ratio: 1; */
+  /* flex:0 0 25%;  */
+   /* margin :0 0.5rem 1rem 0; */
+   object-fit: cover;
+
+}
+.ShowArtImgDiv{
+  /* width : 30% ; */
+  /* aspect-ratio: 1;  */
+/* height:200px; */
+position: relative; /* Ensures the child elements are positioned relative to this container */
+  width: 100%;
+}
+.ShowArtImg{
+ 
+  /* height:100%; */
+ /* object-fit: contain; */
+  /* border-radius: 6px;
+  border: 3px solid rgba(255, 255, 255, 0.516); */
+  width: 100%; /* Make the image span the entire width of the container */
+  height: auto; /* Automatically adjust the height while maintaining the aspect ratio */
+  border-radius: 6px;
+  border: 3px solid rgba(255, 255, 255, 0.516);
+  
+  object-fit: cover; 
 }

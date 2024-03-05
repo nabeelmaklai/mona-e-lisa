@@ -79,7 +79,8 @@ const User = ({ user }) => {
       ) : (
         <></>
       )}
-      <div><div className='profileImgDiv'>
+      <div>
+        <div className='profileImgDiv'>
         {art &&
           art.map((piece) => (
             <Link key={piece._id} to={`/arts/${piece._id}`}>
