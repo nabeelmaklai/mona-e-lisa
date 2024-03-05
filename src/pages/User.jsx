@@ -126,6 +126,7 @@ const User = ({ user }) => {
         <></>
       )}
       <div>
+
         <div className="profileImgDiv">
           {art &&
             showArts &&
@@ -140,6 +141,7 @@ const User = ({ user }) => {
               </Link>
             ))}
         </div>
+
 
         {user ? (
           user.id === id && (
