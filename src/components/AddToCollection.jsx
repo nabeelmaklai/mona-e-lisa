@@ -1,4 +1,5 @@
 import Client from '../services/api'
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { useEffect, useState } from 'react'
 const AddToCollection = ({ user, artId }) => {
   const [collections, setCollections] = useState([])
@@ -37,7 +38,7 @@ const AddToCollection = ({ user, artId }) => {
           </option>
         ))}
       </select>
-      <button onClick={add}>+</button>
+      <PlaylistAddIcon onClick={add}/>
     </div>
   )
 }

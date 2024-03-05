@@ -5,6 +5,7 @@ import Client from '../services/api'
 import AddToCollection from '../components/AddToCollection'
 import LikeButton from '../components/LikeButton'
 import EditArt from '../components/EditArt'
+import CollectionsIcon from '@mui/icons-material/Collections';
 import ReplySection from '../components/ReplySection'
 const ShowArt = ({ user }) => {
   let { id } = useParams()
@@ -90,11 +91,7 @@ const ShowArt = ({ user }) => {
 
   return art ? (
     <div className="show-art">
-      <div className="add-to-collection">
-        {user && <button onClick={showAddCollection}>ADD</button>}
-
-        {showCollection && <AddToCollection user={user} artId={id} />}
-      </div>
+      
 
       <h5>{art.userId.name}</h5>
       <h5>{art.userIds}</h5>
@@ -115,13 +112,20 @@ const ShowArt = ({ user }) => {
         />
       )}
 
-      <img src={art.img} alt="{art.userId.name}" />
-      {/* <p>hello{art.userId._id}</p> */}
-      <p>
-        <b>{art.userId.name}</b> {art.description}
-      </p>
+      <div className="ShowArtImgDiv" >      <img className="ShowArtImg"  src={art.img} alt={art.userId.name} />
+      </div>
+      <div>
+      {user && <LikeButton user={user} art={art} />}</div>
+      
+      <div className="add-to-collection">
+        {user && <CollectionsIcon onClick={showAddCollection}/> }
 
-      {user && <LikeButton user={user} art={art} />}
+        {showCollection && <AddToCollection  user={user} artId={id} />}
+      </div>
+      {/* <p>hello{art.userId._id}</p> */}
+      <p><b>{art.userId.name}</b> {art.description}</p>
+
+      
       <div className="comments-section">
         {user && (
           <div>
