@@ -10,6 +10,7 @@ import SideNav from "../theme/SideNav"
 import Sugesstions from "../theme/Sugesstions"
 import Login from "./Login"
 import Register from "./Register"
+import FollowingList from "../components/FollowingList"
 const Home = () => {
   const [art, setArt] = useState([])
 
@@ -50,9 +51,9 @@ const Home = () => {
             <Link to={`/user/${art.userId._id}`}>
               <div className="post__header">
                 <div className="post__headerAuthor">
-                  {" "}
+                 
                   <Avatar />
-                  {art.userId.name}{" "}
+                  <h2 className="h2">{art.userId.name}</h2>
                 </div>
               </div>
             </Link>
@@ -62,12 +63,13 @@ const Home = () => {
                 
               </div>
             </Link>
-            <p>{art.description}</p>
+            <p><b>{art.userId.name}</b> {art.description}</p>
           </div>
         ))}
       </div>
       <div className="homepage__timeline">
         <Sugesstions />
+        {/* <FollowingList/> */}
         {/* <Login setUser={setUser} /> */}
       </div>
     </div>

@@ -12,6 +12,7 @@ const SideNav = ({ user, handleLogOut }) => {
   // console.log(user.id);
   if (user) {
     userOptions = (
+      <div className="aboveSidenav">
       <div className="sidenav">
         <div className="sidenav__buttons">
           <button className="sidenav__button">
@@ -36,6 +37,7 @@ const SideNav = ({ user, handleLogOut }) => {
               </Link>
             </span>
           </button>
+        </div>
         </div>
       </div>
     )
@@ -67,6 +69,6 @@ const SideNav = ({ user, handleLogOut }) => {
     </div>
   )
 
-  return <header>{user ? userOptions : publicOptions}</header>
+  return <header className="aboveSidenav">{user ? userOptions : publicOptions}</header>
 }
 export default SideNav
