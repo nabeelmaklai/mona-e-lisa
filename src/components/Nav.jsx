@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 
 const Nav = ({user, handleLogOut}) => {
   let userOptions
-  // console.log(user.id);
   if (user) {
 
     userOptions = (

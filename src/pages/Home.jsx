@@ -1,32 +1,75 @@
 // import User from "./User"
-import { GetArt } from '../services/Get'
-import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { GetArt } from "../services/Get"
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { CheckSession } from "../services/Auth"
 
-const Home = ({ user }) => {
+import { Avatar } from "@mui/material"
+import SideNav from "../theme/SideNav"
+import Sugesstions from "../theme/Sugesstions"
+import Login from "./Login"
+import Register from "./Register"
+const Home = () => {
   const [art, setArt] = useState([])
 
   useEffect(() => {
     const showArt = async () => {
       const response = await GetArt()
-      console.log('this i sthe nhome function', response)
+      console.log("this i sthe nhome function", response)
       setArt(response)
     }
     showArt()
   }, [])
 
+  const [user, setUser] = useState(null)
+  const handleLogOut = () => {
+    setUser(null)
+    localStorage.clear()
+  }
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+  }
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      const checkTokenFunction = async () => {
+        await checkToken()
+      }
+      checkTokenFunction()
+    }
+  }, [])
+
   return (
-    <div className="grid-container">
-      {art.map((art) => (
-        <div key={art._id}>
-          <Link to={`/user/${art.userId._id}`}>
-            <h1>{art.userId.name}</h1>
-          </Link>
-          <Link to={`/arts/${art._id}`}>
-            <img src={art.img} alt={art.name} />
-          </Link>
-        </div>
-      ))}
+    <div className="homepage">
+      
+      <div className="PostFlexDiv">
+        {art.map((art) => (
+          <div className="post" key={art._id}>
+            <Link to={`/user/${art.userId._id}`}>
+              <div className="post__header">
+                <div className="post__headerAuthor">
+                  {" "}
+                  <Avatar />
+                  {art.userId.name}{" "}
+                </div>
+              </div>
+            </Link>
+            <Link to={`/arts/${art._id}`}>
+              <div className="post__image">
+                <img className="HomeArtImgs" src={art.img} alt={art.name} />
+                
+              </div>
+            </Link>
+            <p>{art.description}</p>
+          </div>
+        ))}
+      </div>
+      <div className="homepage__timeline">
+        <Sugesstions />
+        {/* <Login setUser={setUser} /> */}
+      </div>
     </div>
   )
 }
