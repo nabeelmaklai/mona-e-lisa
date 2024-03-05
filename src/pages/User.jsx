@@ -13,13 +13,15 @@ const User = ({ user }) => {
   const [addArtForm, setaddArtForm] = useState(false)
   const [following, setFollowing] = useState(false)
   const [profile, setProfile] = useState({})
-  
+  const [collection, setCollection] = useState([])
+
   const [newArt, setNewArt] = useState({
     name: '',
     description: '',
     img: '',
     userId: ''
   })
+
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -29,6 +31,8 @@ const User = ({ user }) => {
       const newFollowingList = response1?.following.map((user) => user._id)
       newFollowingList.includes(id) ? setFollowing(true) : setFollowing(false)
       setArt(response.artIds)
+      console.log('this is the response', response.collectionIds)
+      setCollection(response.collectionIds)
       setProfile(response)
     }
     getUserContent()
@@ -59,7 +63,10 @@ const User = ({ user }) => {
 
   return (
     <div>
-      <div><Avatar/>{profile.name}</div>
+      <div>
+        <Avatar />
+        {profile.name}
+      </div>
       <div>Email: {profile.email}</div>
       {user ? (
         user.id !== id && (
@@ -80,6 +87,14 @@ const User = ({ user }) => {
               <img src={piece.img} alt={piece.name} key={piece._id} />
             </Link>
           ))}
+        {art &&
+          collection.map((piece) => (
+            <Link to={`/collections/${piece._id}`}>
+              {/* <img src={piece.img} alt={piece.name} key={piece._id} /> */}
+              <p>{piece.name}NAme:</p>
+            </Link>
+          ))}
+
         {user ? (
           user.id === id && (
             <button onClick={handleAddArtButton}>Add Art</button>
