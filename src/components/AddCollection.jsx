@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { createCollection } from '../services/Post'
 const AddCollection = ({ user }) => {
-  console.log('This is the addCollection page1', user)
   const [addCollection, setAddCollection] = useState({
     name: '',
     description: '',

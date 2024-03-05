@@ -1,9 +1,10 @@
 import { showArt } from '../services/Get'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import Client from '../services/api'
 import AddToCollection from '../components/AddToCollection'
 import LikeButton from '../components/LikeButton'
+import EditArt from '../components/EditArt'
 const ShowArt = ({ user }) => {
   let { id } = useParams()
   const [art, setArt] = useState(null)
@@ -11,6 +12,11 @@ const ShowArt = ({ user }) => {
   const [showCollection, setShowCollection] = useState(false)
   const [deleteCommentId, setDeleteCommentId] = useState(null)
   const [deleted, setDeleted] = useState(false)
+  const [editArt, setEditArt] = useState(false)
+  const [editArtForm, setEditArtForm] = useState({
+    name: '',
+    description: ''
+  })
 
   let commentRef = {
     body: useRef(null),
@@ -27,7 +33,7 @@ const ShowArt = ({ user }) => {
       setDeleted(false)
     }
     getArt()
-  }, [commented])
+  }, [commented, editArt])
 
   const addComment = async () => {
     const comment = {
@@ -58,6 +64,22 @@ const ShowArt = ({ user }) => {
     // setCommented(true)
   }
 
+  const handleEditClick = () => {
+    console.log('It works')
+    editArt ? setEditArt(false) : setEditArt(!false)
+    // navigate('/arts/edit')
+  }
+  const hadleEditChange = (event) => {
+    setEditArtForm({ ...editArtForm, [event.target.name]: event.target.value })
+    // console.log(event.target.value)
+  }
+  const hadleEditSubmit = async (e) => {
+    e.preventDefault()
+    await Client.put(`/arts/${id}`, editArtForm)
+
+    // console.log('This is the handle submit button for the edits')
+  }
+
   return art ? (
     <div className="show-art">
       <div className="add-to-collection">
@@ -65,12 +87,23 @@ const ShowArt = ({ user }) => {
 
         {showCollection && <AddToCollection user={user} artId={id} />}
       </div>
+
       <h5>{art.userId.name}</h5>
-      <h5>This{art.userIds}hfsdklhfks</h5>
+      <h5>{art.userIds}</h5>
 
       <h4>{art.name}</h4>
+
+      <button onClick={handleEditClick}>Edit</button>
+      {editArt && (
+        <EditArt
+          hadleEditChange={hadleEditChange}
+          hadleEditSubmit={hadleEditSubmit}
+        />
+      )}
+
       <img src={art.img} alt="{art.userId.name}" />
       <p>{art.description}</p>
+
       {user && <LikeButton user={user} art={art} />}
       <div className="comments-section">
         {user && (
@@ -112,15 +145,6 @@ const ShowArt = ({ user }) => {
             ) : (
               <></>
             )}
-
-            {/* <form onSubmit={handleDeleteComment}>
-              <button
-                onClick={() => {
-                  handleDeleteClick(comment._id)
-                }}
-              >
-                Delete
-              </button> */}
           </div>
         ))}
       </div>

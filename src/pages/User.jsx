@@ -12,6 +12,7 @@ const User = ({ user }) => {
   const [addArtForm, setaddArtForm] = useState(false)
   const [following, setFollowing] = useState(false)
   const [profile, setProfile] = useState({})
+  
   const [newArt, setNewArt] = useState({
     name: '',
     description: '',
@@ -78,7 +79,6 @@ const User = ({ user }) => {
               <img src={piece.img} alt={piece.name} key={piece._id} />
             </Link>
           ))}
-
         {user ? (
           user.id === id && (
             <button onClick={handleAddArtButton}>Add Art</button>
@@ -86,7 +86,6 @@ const User = ({ user }) => {
         ) : (
           <></>
         )}
-
         {user ? (
           user.id === id && (
             <button onClick={navigateToAddCollection}>

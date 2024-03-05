@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import Home from './pages/Home'
 import { CheckSession } from './services/Auth'
 import AddCollection from './components/AddCollection'
+import EditArt from './components/EditArt'
 const App = () => {
   const [user, setUser] = useState(null)
   const handleLogOut = () => {
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/arts/:id" element={<ShowArt user={user} />} />
           <Route path="/collections/:id" element={<ShowCollection />} />
           <Route path="/collections" element={<AddCollection user={user} />} />
+          <Route path="/arts/edit" element={<EditArt user={user} />} />
         </Routes>
       </main>
     </div>
