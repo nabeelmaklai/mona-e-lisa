@@ -5,6 +5,7 @@ import Client from '../services/api'
 import AddToCollection from '../components/AddToCollection'
 import LikeButton from '../components/LikeButton'
 import EditArt from '../components/EditArt'
+import ReplySection from '../components/ReplySection'
 const ShowArt = ({ user }) => {
   let { id } = useParams()
   const [art, setArt] = useState(null)
@@ -80,6 +81,12 @@ const ShowArt = ({ user }) => {
     // console.log('This is the handle submit button for the edits')
   }
 
+  const showReplies = (e) => {
+    e.target.nextSibling.hidden
+      ? (e.target.nextSibling.hidden = false)
+      : (e.target.nextSibling.hidden = true)
+  }
+
   return art ? (
     <div className="show-art">
       <div className="add-to-collection">
@@ -129,7 +136,10 @@ const ShowArt = ({ user }) => {
             <b>{comment.userId.name}</b>
             <br />
             {comment.body}
-
+            <div>
+              <button onClick={showReplies}>reply</button>
+              <ReplySection id={comment._id} />
+            </div>
             {user ? (
               comment.userId._id === user.id && (
                 <form onSubmit={handleDeleteComment}>
