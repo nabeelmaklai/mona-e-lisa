@@ -63,10 +63,9 @@ const User = ({ user }) => {
 
   return (
     <div>
-      <div>
-        <Avatar />
-        {profile.name}
-      </div>
+
+      <div className="post__headerAuthor"><Avatar/><h2 className='h2'>{profile.name}</h2></div>
+
       <div>Email: {profile.email}</div>
       {user ? (
         user.id !== id && (
@@ -80,13 +79,14 @@ const User = ({ user }) => {
       ) : (
         <></>
       )}
-      <div>
+      <div><div className='profileImgDiv'>
         {art &&
           art.map((piece) => (
             <Link key={piece._id} to={`/arts/${piece._id}`}>
-              <img src={piece.img} alt={piece.name} key={piece._id} />
+
+              <img className="HomeArtImgs ProfileImgs" src={piece.img} alt={piece.name} key={piece._id} />
             </Link>
-          ))}
+          ))}</div>
         {art &&
           collection.map((piece) => (
             <Link to={`/collections/${piece._id}`}>

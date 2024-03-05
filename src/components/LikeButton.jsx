@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Client from '../services/api'
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 const LikeButton = ({ user, art }) => {
   const [liked, setLiked] = useState(null)
 
@@ -24,9 +25,12 @@ const LikeButton = ({ user, art }) => {
   }
 
   return liked ? (
-    <button onClick={removeLike}>Liked {art.likes.length}</button>
+    <button onClick={removeLike}>
+      <FavoriteIcon style={{ color: 'red' }} />
+      {art.likes.length}</button>
   ) : (
-    <button onClick={like}>Like {art.likes.length}</button>
+    <button onClick={like}> 
+    <FavoriteBorderIcon /> {art.likes.length}</button>
   )
 }
 
