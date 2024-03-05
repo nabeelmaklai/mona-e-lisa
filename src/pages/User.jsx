@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import AddArt from '../components/AddArt'
 import FollowButton from '../components/FollowButton'
+import { Avatar } from '@mui/material'
 
 const User = ({ user }) => {
   let { id } = useParams()
@@ -58,7 +59,7 @@ const User = ({ user }) => {
 
   return (
     <div>
-      <div>{profile.name}</div>
+      <div><Avatar/>{profile.name}</div>
       <div>Email: {profile.email}</div>
       {user ? (
         user.id !== id && (
