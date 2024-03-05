@@ -91,7 +91,7 @@ const User = ({ user }) => {
           collection.map((piece) => (
             <Link to={`/collections/${piece._id}`}>
               {/* <img src={piece.img} alt={piece.name} key={piece._id} /> */}
-              <p>{piece.name}NAme:</p>
+              <p>{piece.name}Name:</p>
             </Link>
           ))}
 
