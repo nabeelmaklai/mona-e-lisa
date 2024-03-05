@@ -28,7 +28,9 @@ const ShowArt = ({ user }) => {
     const getArt = async () => {
       const response = await showArt(id)
       setArt(response)
-      // console.log(response._id)
+      console.log('This is the responce ID', response.userId._id)
+      console.log('This is the responce ID1', user.id)
+
       setCommented(false)
       setDeleted(false)
     }
@@ -93,15 +95,20 @@ const ShowArt = ({ user }) => {
 
       <h4>{art.name}</h4>
 
-      <button onClick={handleEditClick}>Edit</button>
-      {editArt && (
-        <EditArt
-          hadleEditChange={hadleEditChange}
-          hadleEditSubmit={hadleEditSubmit}
-        />
-      )}
+      {user ? (art.userId._id===user.id && (
+        <button onClick={handleEditClick}>Edit</button>
+      )) : (<></>)
+}
+        {editArt && (
+          <EditArt
+            hadleEditChange={hadleEditChange}
+            hadleEditSubmit={hadleEditSubmit}
+          />
+        )}
+
 
       <img src={art.img} alt="{art.userId.name}" />
+      {/* <p>hello{art.userId._id}</p> */}
       <p>{art.description}</p>
 
       {user && <LikeButton user={user} art={art} />}
