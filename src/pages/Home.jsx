@@ -51,7 +51,7 @@ const Home = () => {
             <Link to={`/user/${art.userId._id}`}>
               <div className="post__header">
                 <div className="post__headerAuthor">
-                 
+                
                   <Avatar />
                   <h2 className="h2">{art.userId.name}</h2>
                 </div>

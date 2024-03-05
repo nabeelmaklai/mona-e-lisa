@@ -14,6 +14,7 @@ const ShowArt = ({ user }) => {
   const [deleteCommentId, setDeleteCommentId] = useState(null)
   const [deleted, setDeleted] = useState(false)
   const [editArt, setEditArt] = useState(false)
+  const [replayed, setReplayed] = useState(false)
   const [editArtForm, setEditArtForm] = useState({
     name: '',
     description: ''
@@ -29,14 +30,12 @@ const ShowArt = ({ user }) => {
     const getArt = async () => {
       const response = await showArt(id)
       setArt(response)
-      console.log('This is the responce ID', response.userId._id)
-      console.log('This is the responce ID1', user.id)
-
       setCommented(false)
       setDeleted(false)
+      setReplayed(false)
     }
     getArt()
-  }, [commented, editArt])
+  }, [commented, editArt, replayed])
 
   const addComment = async () => {
     const comment = {
@@ -102,21 +101,25 @@ const ShowArt = ({ user }) => {
 
       <h4>{art.name}</h4>
 
-      {user ? (art.userId._id===user.id && (
-        <button onClick={handleEditClick}>Edit</button>
-      )) : (<></>)
-}
-        {editArt && (
-          <EditArt
-            hadleEditChange={hadleEditChange}
-            hadleEditSubmit={hadleEditSubmit}
-          />
-        )}
-
+      {user ? (
+        art.userId._id === user.id && (
+          <button onClick={handleEditClick}>Edit</button>
+        )
+      ) : (
+        <></>
+      )}
+      {editArt && (
+        <EditArt
+          hadleEditChange={hadleEditChange}
+          hadleEditSubmit={hadleEditSubmit}
+        />
+      )}
 
       <img src={art.img} alt="{art.userId.name}" />
       {/* <p>hello{art.userId._id}</p> */}
-      <p><b>{art.userId.name}</b> {art.description}</p>
+      <p>
+        <b>{art.userId.name}</b> {art.description}
+      </p>
 
       {user && <LikeButton user={user} art={art} />}
       <div className="comments-section">
@@ -144,8 +147,12 @@ const ShowArt = ({ user }) => {
             <br />
             {comment.body}
             <div>
-              <button onClick={showReplies}>reply</button>
-              <ReplySection id={comment._id} />
+              <button onClick={showReplies}>Replies</button>
+              <ReplySection
+                comment={comment}
+                user={user}
+                setReplayed={setReplayed}
+              />
             </div>
             {user ? (
               comment.userId._id === user.id && (
