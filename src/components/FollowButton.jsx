@@ -1,27 +1,13 @@
-import { useEffect, useState } from 'react'
 import Client from '../services/api'
 
-const FollowButton = ({ user, profileId }) => {
-  const [following, setFollowing] = useState(null)
-
-  useEffect(() => {
-    user.following.includes(profileId)
-      ? setFollowing(true)
-      : setFollowing(false)
-  }, [following])
-
+const FollowButton = ({ profile, user, following, setFollowing }) => {
   const follow = async () => {
-    await Client.put(`/users/${user.id}/follow`, { userId: profileId })
-    user.following.push(profileId)
+    await Client.put(`/users/${user.id}/follow`, { userId: profile._id })
     setFollowing(true)
   }
 
   const unfollow = async () => {
-    await Client.put(`/users/${user.id}/unfollow`, { userId: profileId })
-    const index = user.following.findIndex((id) => {
-      return id === profileId
-    })
-    user.following.splice(index, 1)
+    await Client.put(`/users/${user.id}/unfollow`, { userId: profile._id })
     setFollowing(false)
   }
 

@@ -1,4 +1,3 @@
-import Login from './Login'
 import { ShowContent } from '../services/Get'
 import { useState, useEffect } from 'react'
 import { addArt } from '../services/Post'
@@ -11,6 +10,7 @@ const User = ({ user }) => {
   let { id } = useParams()
   const [art, setArt] = useState([])
   const [addArtForm, setaddArtForm] = useState(false)
+  const [following, setFollowing] = useState(false)
   const [profile, setProfile] = useState({})
   
   const [newArt, setNewArt] = useState({
@@ -24,11 +24,14 @@ const User = ({ user }) => {
   useEffect(() => {
     const getUserContent = async () => {
       const response = await ShowContent(id)
+      const response1 = await ShowContent(user?.id)
+      const newFollowingList = response1?.following.map((user) => user._id)
+      newFollowingList.includes(id) ? setFollowing(true) : setFollowing(false)
       setArt(response.artIds)
       setProfile(response)
     }
     getUserContent()
-  }, [id])
+  }, [id, following])
 
   const hadleChange = (event) => {
     setNewArt({ ...newArt, [event.target.name]: event.target.value })
@@ -58,7 +61,14 @@ const User = ({ user }) => {
       <div>{profile.name}</div>
       <div>Email: {profile.email}</div>
       {user ? (
-        user.id !== id && <FollowButton user={user} profileId={id} />
+        user.id !== id && (
+          <FollowButton
+            user={user}
+            profile={profile}
+            following={following}
+            setFollowing={setFollowing}
+          />
+        )
       ) : (
         <></>
       )}
