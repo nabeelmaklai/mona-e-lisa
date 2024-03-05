@@ -64,12 +64,10 @@ const User = ({ user }) => {
     addArtForm ? setaddArtForm(false) : setaddArtForm(true)
   }
   const handlecollectionButton = () => {
-
     setShowCollection(true)
     setShowArts(false)
   }
   const handleArtButton = () => {
-
     setShowArts(true)
     setShowCollection(false)
   }
@@ -85,19 +83,9 @@ const User = ({ user }) => {
 
   return (
     <div>
-      {user ? (
-        user.id === id && (
-          <button onClick={handlecollectionButton}>Collections</button>
-        )
-      ) : (
-        <></>
-      )}
+      <button onClick={handlecollectionButton}>Collections</button>
 
-      {user ? (
-        user.id === id && <button onClick={handleArtButton}>Art</button>
-      ) : (
-        <></>
-      )}
+      <button onClick={handleArtButton}>Art</button>
 
       {showCollection &&
         collections.map((collection) => (
@@ -126,7 +114,6 @@ const User = ({ user }) => {
         <></>
       )}
       <div>
-
         <div className="profileImgDiv">
           {art &&
             showArts &&
@@ -141,7 +128,6 @@ const User = ({ user }) => {
               </Link>
             ))}
         </div>
-
 
         {user ? (
           user.id === id && (
