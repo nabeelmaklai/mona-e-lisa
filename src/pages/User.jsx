@@ -10,6 +10,7 @@ import ShowCollection from './ShowCollection'
 import AddCollection from '../components/AddCollection'
 import EditBio from '../components/EditBio'
 import Client from '../services/api'
+import EditIcon from '@mui/icons-material/Edit'
 
 const User = ({ user, setUser, changedBio, setChangedBio }) => {
   let { id } = useParams()
@@ -117,15 +118,15 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
 
       <div>Email: {profile.email}</div>
       <br />
-      <div>Bio: {profile.bio}</div>
+      <div className="bioDiv">
+        Bio: {profile.bio}
+        {user ? (
+          user.id === id && <EditIcon onClick={handlEditBioForm} />
+        ) : (
+          <></>
+        )}
+      </div>
 
-      {user ? (
-        user.id === id && (
-          <button onClick={handlEditBioForm}>Edit Your Bio</button>
-        )
-      ) : (
-        <></>
-      )}
       {editBioForm && (
         <EditBio
           profile={profile}
@@ -204,7 +205,12 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
         )}
 
-        {addCollectionForm && <AddCollection user={user} setAddCollectionForm={setAddCollectionForm}/>}
+        {addCollectionForm && (
+          <AddCollection
+            user={user}
+            setAddCollectionForm={setAddCollectionForm}
+          />
+        )}
       </div>
     </div>
   )
