@@ -109,7 +109,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
   }
 
   return (
-    <div>
+    <div className='profileDiv' >
       <div className="post__headerAuthor">
         <Avatar />
         <h2 className="h2">{profile.name}</h2>
