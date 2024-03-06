@@ -1,4 +1,5 @@
 // import User from "./User"
+import Client from '../services/api'
 import { GetArt } from '../services/Get'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -18,7 +19,7 @@ const Home = () => {
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
-    console.log(user)
+    // console.log(user)
   }
 
   useEffect(() => {
@@ -29,10 +30,9 @@ const Home = () => {
       }
       checkTokenFunction()
     }
-
     const showArt = async () => {
       const response = await GetArt()
-      console.log('this i sthe nhome function', response)
+      // console.log('this i sthe nhome function', response)
       setArt(response)
     }
     showArt()
@@ -69,7 +69,7 @@ const Home = () => {
       </div>
       <div className="homepage__timeline">
         {/* <Sugesstions /> */}
-        <FollowingList following={user?.following} />
+        <FollowingList user={user} />
         {/* <Login setUser={setUser} /> */}
       </div>
     </div>
