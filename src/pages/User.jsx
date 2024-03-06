@@ -203,7 +203,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
         )}
 
-        {addCollectionForm && <AddCollection user={user} />}
+        {addCollectionForm && <AddCollection user={user} setAddCollectionForm={setAddCollectionForm}/>}
       </div>
     </div>
   )
