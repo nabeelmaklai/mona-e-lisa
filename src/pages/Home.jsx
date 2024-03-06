@@ -59,7 +59,7 @@ const Home = () => {
             </Link>
             <Link to={`/arts/${art._id}`}>
               <div className="post__image">
-                <img className="HomeArtImgs" src={art.img} alt={art.name} />
+                <img className="HomeArtImgss" src={art.img} alt={art.name} />
                 
               </div>
             </Link>

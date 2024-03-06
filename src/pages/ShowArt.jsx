@@ -6,7 +6,9 @@ import AddToCollection from '../components/AddToCollection'
 import LikeButton from '../components/LikeButton'
 import EditArt from '../components/EditArt'
 import CollectionsIcon from '@mui/icons-material/Collections';
+
 import ReplySection from '../components/ReplySection'
+
 const ShowArt = ({ user }) => {
   let { id } = useParams()
   const [art, setArt] = useState(null)
@@ -112,7 +114,8 @@ const ShowArt = ({ user }) => {
         />
       )}
 
-      <div className="ShowArtImgDiv" >      <img className="ShowArtImg"  src={art.img} alt={art.userId.name} />
+      <div className="ShowArtImgDiv" >      <img className="ShowArtImg img-resize"  src={art.img} alt={art.userId.name} />
+
       </div>
       <div>
       {user && <LikeButton user={user} art={art} />}</div>
@@ -131,7 +134,7 @@ const ShowArt = ({ user }) => {
           <div>
             {' '}
             <input type="text" ref={commentRef.body} />
-            <input
+           <input
               type="hidden"
               hidden
               ref={commentRef.userId}

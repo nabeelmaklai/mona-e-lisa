@@ -19,11 +19,12 @@ const ShowCollection = () => {
 
   return (
     <div className="show-collection">
-      <h4>{collection.name}</h4>
-      <p>{collection.description}</p>
+      
+      <h4>{collection.name}[{collection.description}]</h4>
+      <p></p>
 
       {collectionArt.map((art) => (
-        <img src={art.img} alt={art.name} />
+        <img className='ShowArtImg  img-resize resize'  src={art.img} alt={art.name} />
       ))}
     </div>
   )

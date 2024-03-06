@@ -3,6 +3,63 @@ html {
   color: white;
   
 }
+.form{
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+}
+.sub-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  /* width: 40vw; */
+  /* height: 80vh; */
+  border-radius: 12px;
+  box-shadow: rgba(50, 50, 93, 0, 25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background-color: rgb(40, 39, 39);
+}
+input {
+  display: flex;
+  border-radius: 50px;
+  border-style: none;
+  outline: none;
+  margin-top: 8px;
+  padding: 12px 24px;
+  width: 250px;
+  background-color: #eaeeed;
+}
+input:focus {
+  opacity: 0.7;
+}
+/* .upper-form{
+
+}
+.input-wrapper{
+
+} */
+.loginBtn{
+  padding: 12px 48px;
+  margin-top: 10px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  background-color:#0063cc;
+  font-weight: 600;
+  width: 50%;
+}
+.loginBtn:hover {
+  /* opacity: 0.7; */
+  background-color:#0069d9;
+
+}
+.loginBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 .homepage {
   display: flex;
   flex-direction: row;
@@ -54,9 +111,21 @@ html {
   width: 100%;
   border-radius: 6px;
   border: 0.6px solid rgba(128, 128, 128, 0.516);
+  /* height :400px;
+  object-fit:cover;
+  object-position: center;
+  width:500px */
 
   /* height: 40%;
   display: flex; */
+}
+.HomeArtImgss{
+  height :400px;
+  object-fit:cover;
+  object-position: center;
+  width:500px;
+  border-radius: 6px;
+  border: 3px solid rgba(128, 128, 128, 0.516)
 }
 /* h2 {
   display: flex;
@@ -146,23 +215,38 @@ html {
    object-fit: cover;
 
 }
-.ShowArtImgDiv{
-  /* width : 30% ; */
-  /* aspect-ratio: 1;  */
-/* height:200px; */
-position: relative; /* Ensures the child elements are positioned relative to this container */
-  width: 100%;
-}
+/* .ShowArtImgDiv{
+  width : 30% ;
+  aspect-ratio: 1; 
+} */
 .ShowArtImg{
- 
-  /* height:100%; */
- /* object-fit: contain; */
-  /* border-radius: 6px;
-  border: 3px solid rgba(255, 255, 255, 0.516); */
-  width: 100%; /* Make the image span the entire width of the container */
-  height: auto; /* Automatically adjust the height while maintaining the aspect ratio */
+  /* width: 100vw; */
+  /* aspect-ratio: ; */
   border-radius: 6px;
   border: 3px solid rgba(255, 255, 255, 0.516);
+
+
+}
+.img-resize{
+  height :500px;
   
-  object-fit: cover; 
+ 
+  width:500px; 
+  object-position:center;
+  /* object-fit:fill; */
+  object-fit:cover;
+
+}
+.resize{
+  width :50%;
+  height :300px
+}
+svg {
+  display: flex;
+  align-content: flex-end;
+}
+.add-to-collection{
+  display: flex;
+  align-content: flex-end;
+  
 }

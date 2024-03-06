@@ -53,6 +53,7 @@ const App = () => {
           <Route path="/arts/edit" element={<EditArt user={user} />} />
         </Routes>
       </main>
+      <div>ggg</div>
     </div>
   )
 }
