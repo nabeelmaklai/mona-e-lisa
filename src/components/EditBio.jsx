@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-const EditBio = () => {
+import Client from '../services/api'
+const EditBio = ({ user, setChangedBio, handleSubmit }) => {
   const [editBioForm, setEditBioForm] = useState({
     name: '',
     bio: ''
   })
   let { id } = useParams()
-  const handleSubmit = async () => {
-    await Client.put(`/users/${id}`)
+  const onSubmit = async (event) => {
+    event.preventDefault()
+    await handleSubmit(editBioForm)
   }
+  // useEffect(() => {
+  //   handleSubmit()
+  // }, [])
 
   const hadleChange = (event) => {
     setEditBioForm({ ...editBioForm, [event.target.name]: event.target.value })
@@ -17,7 +22,7 @@ const EditBio = () => {
 
   return (
     <div>
-      <form action="" onSubmit={handleSubmit}>
+      <form action="" onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
         <input type="text" name="name" onChange={hadleChange} />
         <label htmlFor="bio">Description</label>
