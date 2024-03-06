@@ -121,7 +121,6 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
         <Avatar />
         <h2 className="h2">{profile.name}</h2>
       </div>
-
       <div>Email: {profile.email}</div>
       <br />
       <div className="bioDiv">
