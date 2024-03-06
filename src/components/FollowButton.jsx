@@ -13,9 +13,13 @@ const FollowButton = ({ profile, user, setUser, following, setFollowing }) => {
   }
 
   return following ? (
-    <button onClick={unfollow}>Unfollow</button>
+    <button onClick={unfollow} className="followBtn">
+      Unfollow
+    </button>
   ) : (
-    <button onClick={follow}>Follow</button>
+    <button onClick={follow} className="followBtn">
+      Follow
+    </button>
   )
 }
 

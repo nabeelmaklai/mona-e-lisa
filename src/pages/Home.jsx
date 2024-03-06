@@ -35,7 +35,7 @@ const Home = () => {
       setArt(response)
     }
     showArt()
-  }, [user])
+  }, [])
 
   return (
     <div className="homepage">

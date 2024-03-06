@@ -1,3 +1,4 @@
+import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck'
 const AddArt = ({ hadleChange, handleAddArt }) => {
   return (
     <div>
@@ -8,7 +9,9 @@ const AddArt = ({ hadleChange, handleAddArt }) => {
         <input type="text" name="description" onChange={hadleChange} />
         <label htmlFor="img">Image</label>
         <input type="text" name="img" onChange={hadleChange} />
-        <button>Submit</button>
+        <button className="black">
+          <LibraryAddCheckIcon style={{ color: 'white' }} />
+        </button>
       </form>
     </div>
   )
