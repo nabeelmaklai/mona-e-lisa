@@ -281,14 +281,15 @@ main {
   /* width: 30px; */
   display: flex;
   align-items: center;
-
 }
-.commentsInput>input{
+.commentsInput > input {
   padding: 9px;
 }
-.comments-section{
+.comments-section {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
 }
-
+.collection-art > a{ text-decoration: none;
+  
+}

@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
 
 body {
   /* font-family: 'Open Sans', sans-serif bold ; */
   margin: 0;
 
-  background-image: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%); 
+  background-image: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%);
   height: 400vh;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   /* background-color: rgb(0, 0, 0); */
   /* color: white; */
 }
@@ -87,12 +87,12 @@ ul {
 
 header {
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   /* justify-content: space-between; */
 
   align-items: center;
   height: 10vh;
-  background:rgb(34, 35, 34);
+  background: rgb(34, 35, 34);
 }
 header nav a {
   color: white;
@@ -111,34 +111,30 @@ header nav a {
   width: 100%;
   /* height: 80%; */
   aspect-ratio: 5/4;
-  object-fit:contain ;
+  object-fit: contain;
 
   display: flex;
   background-color: #ffffff;
-  
+
   border: 2.5px solid rgba(0, 0, 0, 0.909);
   border-radius: 10px;
-
-  
 }
 .grid-container {
   display: flex;
- flex-wrap: wrap; 
- justify-content: center;
- gap:10px
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 
   /* gap: 10px; Adjust as needed */
 }
-.grid-container>div{
+.grid-container > div {
   width: 30%;
 }
-.grid-container h1{
-  color:white ;
+.grid-container h1 {
+  color: white;
 }
- .commentBtn{
-
+.commentBtn {
   bottom: 20px; /* Adjust this value to change the distance from the bottom */
   right: 20px;
-
 }
 
