@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Client from '../services/api'
+import { Avatar } from '@mui/material'
 const FollowingList = ({ user }) => {
   const [following, setFollowing] = useState([])
 
@@ -15,10 +16,14 @@ const FollowingList = ({ user }) => {
     }
   }, [user])
   return following?.length ? (
-    <div>
+    <div className='Following'>
+      <h1>{following.length} Following</h1>
       {following?.map((user) => (
         <Link key={user._id} to={`/user/${user._id}`}>
-          <h4>{user.name}</h4>
+          <div className="post__headerAuthor">
+          <Avatar />
+          <h4 className="h2">{user.name}</h4>
+          </div>
         </Link>
       ))}
     </div>
