@@ -39,11 +39,13 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
   useEffect(() => {
     const getUserContent = async () => {
       const response = await ShowContent(id)
-      const response1 = await ShowContent(user?.id)
-      console.log(response)
-      console.log(response1)
-      const newFollowingList = response1?.following.map((user) => user._id)
-      newFollowingList.includes(id) ? setFollowing(true) : setFollowing(false)
+
+      if (user) {
+        const response1 = await ShowContent(user?.id)
+        const newFollowingList = response1?.following.map((user) => user._id)
+        newFollowingList.includes(id) ? setFollowing(true) : setFollowing(false)
+      }
+
       response.artIds.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       )
@@ -121,6 +123,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
         <Avatar />
         <h2 className="h2">{profile.name}</h2>
       </div>
+
       <div>Email: {profile.email}</div>
       <br />
       <div className="bioDiv">
