@@ -5,7 +5,8 @@ export const GetArt = async () => {
     const response = await Client.get('/arts')
     return response.data
   } catch (error) {
-    throw error
+    // throw error
+    console.log('error', error)
   }
 }
 

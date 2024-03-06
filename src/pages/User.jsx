@@ -1,17 +1,20 @@
-import { ShowContent } from "../services/Get"
-import { useState, useEffect } from "react"
-import { addArt } from "../services/Post"
-import { useParams, useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
-import AddArt from "../components/AddArt"
-import FollowButton from "../components/FollowButton"
-import { Avatar } from "@mui/material"
-import ShowCollection from "./ShowCollection"
+import { ShowContent } from '../services/Get'
+import { useState, useEffect } from 'react'
+import { addArt } from '../services/Post'
+import { useParams, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import AddArt from '../components/AddArt'
+import FollowButton from '../components/FollowButton'
+import { Avatar } from '@mui/material'
+import ShowCollection from './ShowCollection'
+import AddCollection from '../components/AddCollection'
 
 const User = ({ user, setUser }) => {
   let { id } = useParams()
   const [art, setArt] = useState([])
   const [addArtForm, setaddArtForm] = useState(false)
+  const [addCollectionForm, setAddCollectionForm] = useState(false)
+
   const [following, setFollowing] = useState(false)
   const [profile, setProfile] = useState({})
   const [collections, setCollections] = useState([])
@@ -19,10 +22,10 @@ const User = ({ user, setUser }) => {
   const [showArts, setShowArts] = useState(true)
 
   const [newArt, setNewArt] = useState({
-    name: "",
-    description: "",
-    img: "",
-    userId: "",
+    name: '',
+    description: '',
+    img: '',
+    userId: ''
   })
 
   let navigate = useNavigate()
@@ -35,7 +38,7 @@ const User = ({ user, setUser }) => {
       newFollowingList.includes(id) ? setFollowing(true) : setFollowing(false)
       setArt(response.artIds)
       console.log(
-        "this is the response from the get user content",
+        'this is the response from the get user content',
         response.collectionIds[0].artIds[0]
       )
       setCollections(response.collectionIds)
@@ -56,13 +59,17 @@ const User = ({ user, setUser }) => {
       name: newArt.name,
       description: newArt.description,
       img: newArt.img,
-      userId: user.id,
+      userId: user.id
     })
   }
 
   const handleAddArtButton = () => {
     addArtForm ? setaddArtForm(false) : setaddArtForm(true)
   }
+  const handleAddCollectionButton = () => {
+    addCollectionForm ? setAddCollectionForm(false) : setAddCollectionForm(true)
+  }
+
   const handlecollectionButton = () => {
     setShowCollection(true)
     setShowArts(false)
@@ -73,7 +80,7 @@ const User = ({ user, setUser }) => {
   }
 
   const navigateToAddCollection = () => {
-    navigate("/collections")
+    navigate('/collections')
   }
   {
     addArtForm && (
@@ -91,12 +98,15 @@ const User = ({ user, setUser }) => {
         collections.map((collection) => (
           <Link to={`/collections/${collection._id}`} key={collection._id}>
             <p>Name:{collection.name}</p>
-           {collection.artIds.length ? 
-            <img
-              className="ShowArtImg  img-resize resize"
-              src={collection.artIds[0].img}
-              alt={collection.name}
-            />: <></>}
+            {collection.artIds.length ? (
+              <img
+                className="ShowArtImg  img-resize resize"
+                src={collection.artIds[0].img}
+                alt={collection.name}
+              />
+            ) : (
+              <></>
+            )}
           </Link>
         ))}
 
@@ -144,7 +154,7 @@ const User = ({ user, setUser }) => {
         )}
         {user ? (
           user.id === id && (
-            <button onClick={navigateToAddCollection}>
+            <button onClick={handleAddCollectionButton}>
               Create a Collection
             </button>
           )
@@ -155,9 +165,10 @@ const User = ({ user, setUser }) => {
         {addArtForm && (
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
         )}
+        {addCollectionForm && <AddCollection user={user} />}
       </div>
     </div>
   )
 }
-
+//
 export default User

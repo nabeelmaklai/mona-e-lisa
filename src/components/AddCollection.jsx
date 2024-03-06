@@ -20,6 +20,7 @@ const AddCollection = ({ user }) => {
       ...addCollection,
       [event.target.name]: event.target.value
     })
+    console.log('handle change in the add collection componenet')
   }
   return (
     <div>
