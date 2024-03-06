@@ -12,6 +12,7 @@ import ReplySection from '../components/ReplySection'
 import EditIcon from '@mui/icons-material/Edit';
 import ReplyIcon from '@mui/icons-material/Reply';
 import { Avatar } from '@mui/material'
+
 const ShowArt = ({ user }) => {
   const [update, setUpdate] = useState(false)
 
@@ -40,6 +41,7 @@ const ShowArt = ({ user }) => {
       response?.commentIds.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       )
+      setDeleted(true)
 
       setArt(response)
       setCommented(false)
@@ -49,7 +51,7 @@ const ShowArt = ({ user }) => {
     }
 
     getArt()
-  }, [commented, editArt, replayed, update])
+  }, [commented, editArt, replayed, update, deleted])
 
   const addComment = async () => {
     const comment = {
@@ -148,7 +150,7 @@ const ShowArt = ({ user }) => {
 
       <div className="comments-section">
         {user && (
-          <div className='commentsInput'>
+          <div className="commentsInput">
             {' '}
             <input type="text" ref={commentRef.body} />
             <input
@@ -156,9 +158,8 @@ const ShowArt = ({ user }) => {
               hidden
               ref={commentRef.userId}
               value={user.id}
-
-            /> <SendIcon onClick={addComment}/>
-
+            />{' '}
+            <SendIcon onClick={addComment} />
           </div>
         )}
         {art.commentIds.map((comment) => (
@@ -168,8 +169,8 @@ const ShowArt = ({ user }) => {
             <br />
             {comment.body}
             <div>
-              <ReplyIcon onClick={showReplies}/>
-        
+              <ReplyIcon onClick={showReplies} />
+
               <ReplySection
                 comment={comment}
                 user={user}

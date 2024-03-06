@@ -1,3 +1,8 @@
+.black {
+  background-color: black;
+  border: none;
+}
+
 html {
   background-color: black;
   color: white;
@@ -38,6 +43,25 @@ input:focus {
 .input-wrapper{
 
 } */
+.followBtn {
+  padding: 12px 48px;
+  margin-top: 10px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  background-color: #0063cc;
+  font-weight: 600;
+  width: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.followBtn:hover {
+  background-color: #0069d9;
+}
+
 .loginBtn {
   padding: 12px 48px;
   margin-top: 10px;
@@ -187,11 +211,9 @@ a {
   margin-left: 40px;
   margin-right: 100px;
   margin-top: 50px;
-
 }
-.aboveSidenav a{
+.aboveSidenav a {
   font-size: 25px !important;
-  
 }
 .profileImgDiv {
   /* display: flex; */
@@ -301,21 +323,57 @@ main {
   margin-left: 10px;
 }
 
-.Following{
-  position: fixed;
-  
-    margin-top: 75px;
+.bioDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 91%;
+}
 
+.switchButtons {
+  align-self: center;
 }
-.PostFlexDiv{
+
+.switchButton {
+  height: 3em;
+  width: 10em;
+  background-color: #eaeeed;
+  border: none;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+}
+
+.createButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.contentDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.Following {
+  position: fixed;
+
+  margin-top: 75px;
+}
+.PostFlexDiv {
   margin-left: 140px;
-    margin-right: 100px;
+  margin-right: 100px;
 }
-.profileDiv{
+.profileDiv {
   margin-left: 50px;
 }
 
+
 .collection-art > a{ 
   color: #eaeeed;
-}
 
+}
