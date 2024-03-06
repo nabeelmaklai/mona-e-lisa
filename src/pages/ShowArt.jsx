@@ -12,7 +12,7 @@ import ReplySection from '../components/ReplySection'
 import EditIcon from '@mui/icons-material/Edit'
 import ReplyIcon from '@mui/icons-material/Reply'
 import { Avatar } from '@mui/material'
-
+import DeleteIcon from '@mui/icons-material/Delete';
 const ShowArt = ({ user }) => {
   const [update, setUpdate] = useState(false)
 
@@ -147,8 +147,11 @@ const ShowArt = ({ user }) => {
           <b>{art.userId.name}</b> {art.description}
         </p>
       </div>
-
-      <div className="comments-section">
+<body className='body'>
+      {/* <div className="comments-section "> */}
+        <div className='scroll-div'>
+        <div className='scroll-object'>
+        <div className='scroll-bg'>
         {user && (
           <div className="commentsInput">
             {' '}
@@ -166,10 +169,9 @@ const ShowArt = ({ user }) => {
           <div className="commentDiv" key={comment._id}>
             <div className="post__headerAuthor">
               <Avatar style={{ width: '21px', height: '21px' }} />
-              <h4 className="h2">{comment.userId.name}</h4>
+              <h4 className="h2">{comment.userId.name}</h4>: {comment.body}
             </div>
-            <br />
-            {comment.body}
+            
             <div>
               <ReplyIcon onClick={showReplies} />
 
@@ -183,13 +185,10 @@ const ShowArt = ({ user }) => {
             {user ? (
               comment.userId._id === user.id && (
                 <form onSubmit={handleDeleteComment}>
-                  <button
-                    onClick={() => {
+                  <DeleteIcon style={{color:'red'}} onClick={() => {
                       handleDeleteClick(comment._id)
-                    }}
-                  >
-                    Delete
-                  </button>
+                    }}/>
+                 
                 </form>
               )
             ) : (
@@ -198,6 +197,10 @@ const ShowArt = ({ user }) => {
           </div>
         ))}
       </div>
+      </div>
+      </div>
+      </body>
+
     </div>
   ) : (
     <></>
