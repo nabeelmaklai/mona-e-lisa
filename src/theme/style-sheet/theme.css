@@ -228,6 +228,10 @@ a {
   aspect-ratio: 1;
 }
 
+.show-collection {
+  margin-left: 15%;
+}
+
 .ProfileImgs {
   /* width:100%; */
   height: 100%;
