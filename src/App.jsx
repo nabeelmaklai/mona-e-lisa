@@ -45,15 +45,17 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route
             path="/user/:id"
-            element={<User user={user} checkToken={checkToken} />}
+            element={<User user={user} checkToken={checkToken} set={setUser} />}
           />
           <Route path="/arts/:id" element={<ShowArt user={user} />} />
-          <Route path="/collections/:id" element={<ShowCollection />} />
+          <Route
+            path="/collections/:id"
+            element={<ShowCollection user={user} />}
+          />
           <Route path="/collections" element={<AddCollection user={user} />} />
           <Route path="/arts/edit" element={<EditArt user={user} />} />
         </Routes>
       </main>
-      <div>ggg</div>
     </div>
   )
 }
