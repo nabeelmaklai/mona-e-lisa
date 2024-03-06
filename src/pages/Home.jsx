@@ -68,7 +68,7 @@ const Home = () => {
         ))}
       </div>
       <div className="homepage__timeline">
-        <Sugesstions />
+        {/* <Sugesstions /> */}
         {/* <FollowingList/> */}
         {/* <Login setUser={setUser} /> */}
       </div>
