@@ -147,7 +147,7 @@ const ShowArt = ({ user }) => {
           <b>{art.userId.name}</b> {art.description}
         </p>
       </div>
-<body className='body'>
+<section className='body'>
       {/* <div className="comments-section "> */}
         <div className='scroll-div'>
         <div className='scroll-object'>
@@ -199,7 +199,7 @@ const ShowArt = ({ user }) => {
       </div>
       </div>
       </div>
-      </body>
+      </section>
 
     </div>
   ) : (
