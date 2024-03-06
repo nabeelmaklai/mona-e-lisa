@@ -34,7 +34,7 @@ const ShowCollection = ({ user }) => {
 
   return (
     <div className="show-collection">
-      {collection.userId === user.id && (
+      {collection.userId === user?.id && (
         <button onClick={deleteCollection}>Delete Collection</button>
       )}
       <h4>
@@ -50,7 +50,7 @@ const ShowCollection = ({ user }) => {
               src={art.img}
               alt={art.name}
             />
-            {collection.userId === user.id && (
+            {collection.userId === user?.id && (
               <DeleteIcon onClick={() => remove(art._id)} />
             )}
           </Link>
