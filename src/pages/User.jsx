@@ -213,7 +213,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
               <Link to={`/collections/${collection._id}`} key={collection._id}>
                 {collection.artIds.length ? (
                   <img
-                    className="ShowArtImg  img-resize resize"
+                    className="HomeArtImgs ProfileImgs"
                     src={collection.artIds[0].img}
                     alt={collection.name}
                   />
