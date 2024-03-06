@@ -9,8 +9,9 @@ import CollectionsIcon from '@mui/icons-material/Collections'
 import SendIcon from '@mui/icons-material/Send'
 import ReplySection from '../components/ReplySection'
 
-import EditIcon from '@mui/icons-material/Edit'
-import ReplyIcon from '@mui/icons-material/Reply'
+import EditIcon from '@mui/icons-material/Edit';
+import ReplyIcon from '@mui/icons-material/Reply';
+import { Avatar } from '@mui/material'
 
 const ShowArt = ({ user }) => {
   const [update, setUpdate] = useState(false)
@@ -163,7 +164,8 @@ const ShowArt = ({ user }) => {
         )}
         {art.commentIds.map((comment) => (
           <div className="commentDiv" key={comment._id}>
-            <b>{comment.userId.name}</b>
+            <div  className="post__headerAuthor" >
+            <Avatar style={{ width: '21px', height: '21px' }}/><h4 className="h2">{comment.userId.name}</h4></div>
             <br />
             {comment.body}
             <div>
