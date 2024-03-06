@@ -1,5 +1,5 @@
 import { ShowContent } from '../services/Get'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { addArt } from '../services/Post'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -10,6 +10,9 @@ import ShowCollection from './ShowCollection'
 import AddCollection from '../components/AddCollection'
 import EditBio from '../components/EditBio'
 import Client from '../services/api'
+import EditIcon from '@mui/icons-material/Edit'
+import CollectionsIcon from '@mui/icons-material/Collections'
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 
 const User = ({ user, setUser, changedBio, setChangedBio }) => {
   let { id } = useParams()
@@ -90,11 +93,11 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
     editBioForm ? setEditBioForm(false) : setEditBioForm(true)
   }
 
-  const handlecollectionButton = () => {
+  const handlecollectionButton = (e) => {
     setShowCollection(true)
     setShowArts(false)
   }
-  const handleArtButton = () => {
+  const handleArtButton = (e) => {
     setShowArts(true)
     setShowCollection(false)
   }
@@ -109,7 +112,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
   }
 
   return (
-    <div className='profileDiv' >
+    <div className="profile">
       <div className="post__headerAuthor">
         <Avatar />
         <h2 className="h2">{profile.name}</h2>
@@ -117,15 +120,15 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
 
       <div>Email: {profile.email}</div>
       <br />
-      <div>Bio: {profile.bio}</div>
+      <div className="bioDiv">
+        Bio: {profile.bio}
+        {user ? (
+          user.id === id && <EditIcon onClick={handlEditBioForm} />
+        ) : (
+          <></>
+        )}
+      </div>
 
-      {user ? (
-        user.id === id && (
-          <button onClick={handlEditBioForm}>Edit Your Bio</button>
-        )
-      ) : (
-        <></>
-      )}
       {editBioForm && (
         <EditBio
           profile={profile}
@@ -134,10 +137,6 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
           setChangedBio={setChangedBio}
         />
       )}
-
-      <button onClick={handlecollectionButton}>Collections</button>
-
-      <button onClick={handleArtButton}>Art</button>
 
       {user ? (
         user.id !== id && (
@@ -152,7 +151,43 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
       ) : (
         <></>
       )}
-      <div>
+      <div className="contentDiv">
+        <div className="switchButtons">
+          <button onClick={handleArtButton} className="switchButton">
+            Art
+          </button>
+          <button onClick={handlecollectionButton} className="switchButton">
+            Collections
+          </button>
+        </div>
+
+        <div className="createButtons">
+          {user ? (
+            user.id === id && (
+              <AddPhotoAlternateIcon onClick={handleAddArtButton} />
+            )
+          ) : (
+            <></>
+          )}
+          {user ? (
+            user.id === id && (
+              <CollectionsIcon onClick={handleAddCollectionButton} />
+            )
+          ) : (
+            <></>
+          )}
+        </div>
+
+        {addArtForm && (
+          <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
+        )}
+        {addCollectionForm && (
+          <AddCollection
+            user={user}
+            setAddCollectionForm={setAddCollectionForm}
+          />
+        )}
+
         <div className="profileImgDiv">
           {art &&
             showArts &&
@@ -182,29 +217,6 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
               </Link>
             ))}
         </div>
-
-        {user ? (
-          user.id === id && (
-            <button onClick={handleAddArtButton}>Add Art</button>
-          )
-        ) : (
-          <></>
-        )}
-        {user ? (
-          user.id === id && (
-            <button onClick={handleAddCollectionButton}>
-              Create a Collection
-            </button>
-          )
-        ) : (
-          <></>
-        )}
-
-        {addArtForm && (
-          <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
-        )}
-
-        {addCollectionForm && <AddCollection user={user} setAddCollectionForm={setAddCollectionForm}/>}
       </div>
     </div>
   )
