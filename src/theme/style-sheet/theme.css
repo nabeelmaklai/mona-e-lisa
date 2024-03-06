@@ -341,6 +341,7 @@ main {
 }
 
 .profile {
+  margin-left: 10%;
   display: flex;
   flex-direction: column;
   gap: 5%;
@@ -372,8 +373,6 @@ main {
   margin-left: 50px;
 }
 
-
-.collection-art > a{ 
+.collection-art > a {
   color: #eaeeed;
-
 }
