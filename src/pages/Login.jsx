@@ -24,7 +24,7 @@ const Login = ({ setUser }) => {
   }
 
   return (
-    <div className='centers'>
+    <div className="centers">
       <div className="form">
         <form className="sub-form" onSubmit={handleSubmit}>
           <div className="upper-form">

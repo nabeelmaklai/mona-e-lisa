@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Client from '../services/api'
+import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck'
 const EditBio = ({ user, setChangedBio, handleSubmit, profile }) => {
   const [editBioForm, setEditBioForm] = useState({
     name: profile.name,
@@ -37,7 +38,9 @@ const EditBio = ({ user, setChangedBio, handleSubmit, profile }) => {
           onChange={hadleChange}
           value={editBioForm.bio}
         />
-        <button>Submit</button>
+        <button className="black">
+          <LibraryAddCheckIcon style={{ color: 'white' }} />
+        </button>
       </form>
     </div>
   )

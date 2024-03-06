@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createCollection } from '../services/Post'
 import { useNavigate } from 'react-router-dom'
+import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck'
 const AddCollection = ({ user, setAddCollectionForm }) => {
   let navigate = useNavigate()
   const [addCollection, setAddCollection] = useState({
@@ -36,7 +37,9 @@ const AddCollection = ({ user, setAddCollectionForm }) => {
         <label htmlFor="description">Description</label>
         <input type="text" name="description" onChange={hadleChange} />
 
-        <button>Submit</button>
+        <button className="black">
+          <LibraryAddCheckIcon style={{ color: 'white' }} />
+        </button>
       </form>
     </div>
   )
