@@ -8,7 +8,7 @@ import FollowButton from '../components/FollowButton'
 import { Avatar } from '@mui/material'
 import ShowCollection from './ShowCollection'
 
-const User = ({ user }) => {
+const User = ({ user, setUser }) => {
   let { id } = useParams()
   const [art, setArt] = useState([])
   const [addArtForm, setaddArtForm] = useState(false)
@@ -106,6 +106,7 @@ const User = ({ user }) => {
         user.id !== id && (
           <FollowButton
             user={user}
+            setUser={setUser}
             profile={profile}
             following={following}
             setFollowing={setFollowing}

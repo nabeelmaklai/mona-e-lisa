@@ -1,8 +1,11 @@
 import Client from '../services/api'
 
-const FollowButton = ({ profile, user, following, setFollowing }) => {
+const FollowButton = ({ profile, user, setUser, following, setFollowing }) => {
   const follow = async () => {
     await Client.put(`/users/${user.id}/follow`, { userId: profile._id })
+    const tempUser = user
+    tempUser.following.push(profile)
+    setUser(tempUser)
     setFollowing(true)
   }
 

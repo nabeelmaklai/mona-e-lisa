@@ -1,19 +1,19 @@
 // import "./App.css"
 
-import Register from "./pages/Register"
-import { Route, Routes } from "react-router"
-import Login from "./pages/Login"
-import Nav from "./components/Nav"
-import User from "./pages/User"
-import ShowArt from "./pages/ShowArt"
-import ShowCollection from "./pages/ShowCollection"
-import { useEffect, useState } from "react"
-import Home from "./pages/Home"
-import { CheckSession } from "./services/Auth"
-import AddCollection from "./components/AddCollection"
-import EditArt from "./components/EditArt"
-import SideNav from "./theme/SideNav"
-import "./theme/style-sheet/theme.css"
+import Register from './pages/Register'
+import { Route, Routes } from 'react-router'
+import Login from './pages/Login'
+import Nav from './components/Nav'
+import User from './pages/User'
+import ShowArt from './pages/ShowArt'
+import ShowCollection from './pages/ShowCollection'
+import { useEffect, useState } from 'react'
+import Home from './pages/Home'
+import { CheckSession } from './services/Auth'
+import AddCollection from './components/AddCollection'
+import EditArt from './components/EditArt'
+import SideNav from './theme/SideNav'
+import './theme/style-sheet/theme.css'
 const App = () => {
   const [user, setUser] = useState(null)
   const handleLogOut = () => {
@@ -25,7 +25,7 @@ const App = () => {
     setUser(user)
   }
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem('token')
     if (token) {
       const checkTokenFunction = async () => {
         await checkToken()
@@ -45,7 +45,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route
             path="/user/:id"
-            element={<User user={user} checkToken={checkToken} />}
+            element={<User user={user} checkToken={checkToken} set={setUser} />}
           />
           <Route path="/arts/:id" element={<ShowArt user={user} />} />
           <Route path="/collections/:id" element={<ShowCollection />} />
