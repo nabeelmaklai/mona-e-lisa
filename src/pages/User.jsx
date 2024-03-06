@@ -8,18 +8,19 @@ import FollowButton from '../components/FollowButton'
 import { Avatar } from '@mui/material'
 import ShowCollection from './ShowCollection'
 import AddCollection from '../components/AddCollection'
+import EditBio from '../components/EditBio'
 
 const User = ({ user, setUser }) => {
   let { id } = useParams()
   const [art, setArt] = useState([])
   const [addArtForm, setaddArtForm] = useState(false)
   const [addCollectionForm, setAddCollectionForm] = useState(false)
-
   const [following, setFollowing] = useState(false)
   const [profile, setProfile] = useState({})
   const [collections, setCollections] = useState([])
   const [showCollection, setShowCollection] = useState(false)
   const [showArts, setShowArts] = useState(true)
+  const [editBioForm, setEditBioForm] = useState(false)
 
   const [newArt, setNewArt] = useState({
     name: '',
@@ -39,7 +40,7 @@ const User = ({ user, setUser }) => {
       setArt(response.artIds)
       console.log(
         'this is the response from the get user content',
-        response.collectionIds[0].artIds[0]
+        response.email
       )
       setCollections(response.collectionIds)
       setProfile(response)
@@ -69,6 +70,9 @@ const User = ({ user, setUser }) => {
   const handleAddCollectionButton = () => {
     addCollectionForm ? setAddCollectionForm(false) : setAddCollectionForm(true)
   }
+  const handlEditBioForm = () => {
+    editBioForm ? setEditBioForm(false) : setEditBioForm(true)
+  }
 
   const handlecollectionButton = () => {
     setShowCollection(true)
@@ -90,6 +94,14 @@ const User = ({ user, setUser }) => {
 
   return (
     <div>
+      {user ? (
+        user.id === id && (
+          <button onClick={handlEditBioForm}>Edit Your Bio</button>
+        )
+      ) : (
+        <></>
+      )}
+      {editBioForm && <EditBio />}
       <button onClick={handlecollectionButton}>Collections</button>
 
       <button onClick={handleArtButton}>Art</button>
@@ -162,9 +174,18 @@ const User = ({ user, setUser }) => {
           <></>
         )}
 
+        {user ? (
+          user.id === id && (
+            <button onClick={handlEditBioForm}>Edit Your Bio</button>
+          )
+        ) : (
+          <></>
+        )}
+
         {addArtForm && (
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
         )}
+
         {addCollectionForm && <AddCollection user={user} />}
       </div>
     </div>
@@ -172,3 +193,8 @@ const User = ({ user, setUser }) => {
 }
 //
 export default User
+
+{
+  /* <button onClick={handlEditBioForm}>Edit Your Bio</button> */
+}
+//
