@@ -1,7 +1,7 @@
 // import "./App.css"
 
 import Register from './pages/Register'
-import { Route, Routes } from 'react-router'
+import { Route, Routes, useNavigate } from 'react-router'
 import Login from './pages/Login'
 import Nav from './components/Nav'
 import User from './pages/User'
@@ -15,10 +15,12 @@ import EditArt from './components/EditArt'
 import SideNav from './theme/SideNav'
 import './theme/style-sheet/theme.css'
 const App = () => {
+  let navigate = useNavigate()
   const [user, setUser] = useState(null)
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
+    navigate('/')
   }
   const checkToken = async () => {
     const user = await CheckSession()
