@@ -81,10 +81,14 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
   }
 
   const handleAddArtButton = () => {
-    addArtForm ? setaddArtForm(false) : setaddArtForm(true)
+    addArtForm
+      ? setaddArtForm(false)
+      : (setaddArtForm(true), setAddCollectionForm(false))
   }
   const handleAddCollectionButton = () => {
-    addCollectionForm ? setAddCollectionForm(false) : setAddCollectionForm(true)
+    addCollectionForm
+      ? setAddCollectionForm(false)
+      : (setAddCollectionForm(true), setaddArtForm(false))
   }
   const handlEditBioForm = () => {
     editBioForm ? setEditBioForm(false) : setEditBioForm(true)
@@ -109,7 +113,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
   }
 
   return (
-    <div className='profileDiv' >
+    <div className="profileDiv">
       <div className="post__headerAuthor">
         <Avatar />
         <h2 className="h2">{profile.name}</h2>
@@ -204,7 +208,12 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
         )}
 
-        {addCollectionForm && <AddCollection user={user} setAddCollectionForm={setAddCollectionForm}/>}
+        {addCollectionForm && (
+          <AddCollection
+            user={user}
+            setAddCollectionForm={setAddCollectionForm}
+          />
+        )}
       </div>
     </div>
   )
