@@ -7,6 +7,8 @@ import LikeButton from '../components/LikeButton'
 import EditArt from '../components/EditArt'
 import CollectionsIcon from '@mui/icons-material/Collections';
 
+import ReplySection from '../components/ReplySection'
+
 const ShowArt = ({ user }) => {
   let { id } = useParams()
   const [art, setArt] = useState(null)
@@ -15,6 +17,7 @@ const ShowArt = ({ user }) => {
   const [deleteCommentId, setDeleteCommentId] = useState(null)
   const [deleted, setDeleted] = useState(false)
   const [editArt, setEditArt] = useState(false)
+  const [replayed, setReplayed] = useState(false)
   const [editArtForm, setEditArtForm] = useState({
     name: '',
     description: ''
@@ -30,14 +33,12 @@ const ShowArt = ({ user }) => {
     const getArt = async () => {
       const response = await showArt(id)
       setArt(response)
-      console.log('This is the responce ID', response.userId._id)
-      console.log('This is the responce ID1', user.id)
-
       setCommented(false)
       setDeleted(false)
+      setReplayed(false)
     }
     getArt()
-  }, [commented, editArt])
+  }, [commented, editArt, replayed])
 
   const addComment = async () => {
     const comment = {
@@ -84,6 +85,12 @@ const ShowArt = ({ user }) => {
     // console.log('This is the handle submit button for the edits')
   }
 
+  const showReplies = (e) => {
+    e.target.nextSibling.hidden
+      ? (e.target.nextSibling.hidden = false)
+      : (e.target.nextSibling.hidden = true)
+  }
+
   return art ? (
     <div className="show-art">
       
@@ -93,19 +100,22 @@ const ShowArt = ({ user }) => {
 
       <h4>{art.name}</h4>
 
-      {user ? (art.userId._id===user.id && (
-        <button onClick={handleEditClick}>Edit</button>
-      )) : (<></>)
-}
-        {editArt && (
-          <EditArt
-            hadleEditChange={hadleEditChange}
-            hadleEditSubmit={hadleEditSubmit}
-          />
-        )}
+      {user ? (
+        art.userId._id === user.id && (
+          <button onClick={handleEditClick}>Edit</button>
+        )
+      ) : (
+        <></>
+      )}
+      {editArt && (
+        <EditArt
+          hadleEditChange={hadleEditChange}
+          hadleEditSubmit={hadleEditSubmit}
+        />
+      )}
 
-      <div className="ShowArtImgDiv" >
-      <img className="ShowArtImg  img-resize"  src={art.img} alt={art.userId.name} />
+      <div className="ShowArtImgDiv" >      <img className="ShowArtImg img-resize"  src={art.img} alt={art.userId.name} />
+
       </div>
       <div>
       {user && <LikeButton user={user} art={art} />}</div>
@@ -143,7 +153,14 @@ const ShowArt = ({ user }) => {
             <b>{comment.userId.name}</b>
             <br />
             {comment.body}
-
+            <div>
+              <button onClick={showReplies}>Replies</button>
+              <ReplySection
+                comment={comment}
+                user={user}
+                setReplayed={setReplayed}
+              />
+            </div>
             {user ? (
               comment.userId._id === user.id && (
                 <form onSubmit={handleDeleteComment}>
