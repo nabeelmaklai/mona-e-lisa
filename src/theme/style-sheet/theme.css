@@ -315,7 +315,7 @@ main {
   margin-left: 50px;
 }
 
-.collection-art > a{ text-decoration: none;
-  
+.collection-art > a{ 
+  color: #eaeeed;
 }
 

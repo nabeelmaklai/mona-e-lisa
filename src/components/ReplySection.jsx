@@ -27,7 +27,8 @@ const ReplySection = ({ comment, user, setReplayed }) => {
       {comment.replies.length ? (
         comment.replies.map((reply) => (
           <div key={reply._id}>
-            <h5><Avatar style={{ width: '21px', height: '21px' }}  />{reply.user.name}:</h5>
+            <div className="post__headerAuthor">
+            <Avatar style={{ width: '21px', height: '21px' }}  /><h5 className="h2">{reply.user.name}:</h5></div>
             <p> {reply.body}</p>
           </div>
         ))
