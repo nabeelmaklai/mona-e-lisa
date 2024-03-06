@@ -84,10 +84,14 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
   }
 
   const handleAddArtButton = () => {
-    addArtForm ? setaddArtForm(false) : setaddArtForm(true)
+    addArtForm
+      ? setaddArtForm(false)
+      : (setaddArtForm(true), setAddCollectionForm(false))
   }
   const handleAddCollectionButton = () => {
-    addCollectionForm ? setAddCollectionForm(false) : setAddCollectionForm(true)
+    addCollectionForm
+      ? setAddCollectionForm(false)
+      : (setAddCollectionForm(true), setaddArtForm(false))
   }
   const handlEditBioForm = () => {
     editBioForm ? setEditBioForm(false) : setEditBioForm(true)
