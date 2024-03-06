@@ -105,9 +105,6 @@ const User = ({ user, setUser }) => {
         <></>
       )}
       {editBioForm && <EditBio />}
-      <button onClick={handlecollectionButton}>Collections</button>
-
-      <button onClick={handleArtButton}>Art</button>
 
       {showCollection &&
         collections.map((collection) => (
@@ -128,9 +125,11 @@ const User = ({ user, setUser }) => {
       <div className="post__headerAuthor">
         <Avatar />
         <h2 className="h2">{profile.name}</h2>
+        <div>Email: {profile.email}</div>
       </div>
+      <button onClick={handlecollectionButton}>Collections</button>
 
-      <div>Email: {profile.email}</div>
+      <button onClick={handleArtButton}>Art</button>
       {user ? (
         user.id !== id && (
           <FollowButton
