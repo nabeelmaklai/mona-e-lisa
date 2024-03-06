@@ -211,11 +211,9 @@ a {
   margin-left: 40px;
   margin-right: 100px;
   margin-top: 50px;
-
 }
-.aboveSidenav a{
+.aboveSidenav a {
   font-size: 25px !important;
-  
 }
 .profileImgDiv {
   /* display: flex; */
@@ -325,7 +323,6 @@ main {
   margin-left: 10px;
 }
 
-<<<<<<< HEAD
 .bioDiv {
   display: flex;
   justify-content: space-between;
@@ -361,23 +358,20 @@ main {
   align-items: center;
   gap: 1em;
 }
-=======
-.Following{
-  position: fixed;
-  
-    margin-top: 75px;
 
+.Following {
+  position: fixed;
+
+  margin-top: 75px;
 }
-.PostFlexDiv{
+.PostFlexDiv {
   margin-left: 140px;
-    margin-right: 100px;
+  margin-right: 100px;
 }
-.profileDiv{
+.profileDiv {
   margin-left: 50px;
 }
 
-.collection-art > a{ text-decoration: none;
-  
+.collection-art > a {
+  text-decoration: none;
 }
-
->>>>>>> 9e19995b740e5aa8207df664e9d470ded394c4ef
