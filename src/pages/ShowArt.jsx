@@ -5,13 +5,15 @@ import Client from '../services/api'
 import AddToCollection from '../components/AddToCollection'
 import LikeButton from '../components/LikeButton'
 import EditArt from '../components/EditArt'
-import CollectionsIcon from '@mui/icons-material/Collections';
-import SendIcon from '@mui/icons-material/Send';
+import CollectionsIcon from '@mui/icons-material/Collections'
+import SendIcon from '@mui/icons-material/Send'
 import ReplySection from '../components/ReplySection'
+
 import EditIcon from '@mui/icons-material/Edit';
 import ReplyIcon from '@mui/icons-material/Reply';
+
 const ShowArt = ({ user }) => {
-  const [update,setUpdate]=useState(false)
+  const [update, setUpdate] = useState(false)
 
   let { id } = useParams()
   const [art, setArt] = useState(null)
@@ -35,16 +37,19 @@ const ShowArt = ({ user }) => {
   useEffect(() => {
     const getArt = async () => {
       const response = await showArt(id)
+      response?.commentIds.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      )
+
       setArt(response)
       setCommented(false)
       setDeleted(false)
       setReplayed(false)
-     setUpdate(false)
+      setUpdate(false)
     }
-   
+
     getArt()
-     
-  }, [commented, editArt, replayed,update])
+  }, [commented, editArt, replayed, update])
 
   const addComment = async () => {
     const comment = {
@@ -100,14 +105,13 @@ const ShowArt = ({ user }) => {
 
   return art ? (
     <div className="show-art">
-      
       {/* <h5>Name: {art.userId.name}</h5> */}
-      
 
       {user ? (
         art.userId._id === user.id && (
-          <div className='EditBtnDiv' >
-         <EditIcon onClick={handleEditClick}/> </div>
+          <div className="EditBtnDiv">
+            <EditIcon onClick={handleEditClick} />{' '}
+          </div>
         )
       ) : (
         <></>
@@ -120,40 +124,44 @@ const ShowArt = ({ user }) => {
         />
       )}
 
-      <div className="ShowArtImgDiv" >  
-      <h4>Name: {art.name}</h4> 
-        <img className="ShowArtImg img-resize"  src={art.img} alt={art.userId.name} />
+      <div className="ShowArtImgDiv">
+        <h4>Name: {art.name}</h4>
+        <img
+          className="ShowArtImg img-resize"
+          src={art.img}
+          alt={art.userId.name}
+        />
 
-      
-      <div className='underTheImgArt'>
-      {user && <LikeButton user={user} art={art} />}
-      
-      {/* <div className="add-to-collection"> */}
-        {user && <CollectionsIcon onClick={showAddCollection}/> }
+        <div className="underTheImgArt">
+          {user && <LikeButton user={user} art={art} />}
 
-        {showCollection && <AddToCollection  user={user} artId={id} />}
-      {/* </div> */}
+          {/* <div className="add-to-collection"> */}
+          {user && <CollectionsIcon onClick={showAddCollection} />}
+
+          {showCollection && <AddToCollection user={user} artId={id} />}
+          {/* </div> */}
+        </div>
+        {/* <p>hello{art.userId._id}</p> */}
+        <p>
+          <b>{art.userId.name}</b> {art.description}
+        </p>
       </div>
-      {/* <p>hello{art.userId._id}</p> */}
-      <p><b>{art.userId.name}</b> {art.description}</p>
-</div>
-      
+
       <div className="comments-section">
         {user && (
           <div className='commentsInput'>
             {' '}
             <input type="text" ref={commentRef.body} />
-           <input
+            <input
               type="hidden"
               hidden
               ref={commentRef.userId}
               value={user.id}
+
             /> <SendIcon onClick={addComment}/>
-            
-           
+
           </div>
         )}
-
         {art.commentIds.map((comment) => (
           <div className="commentDiv" key={comment._id}>
             <b>{comment.userId.name}</b>

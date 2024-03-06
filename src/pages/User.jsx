@@ -37,6 +37,9 @@ const User = ({ user, setUser }) => {
       const response1 = await ShowContent(user?.id)
       const newFollowingList = response1?.following.map((user) => user._id)
       newFollowingList.includes(id) ? setFollowing(true) : setFollowing(false)
+      response.artIds.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      )
       setArt(response.artIds)
       console.log(
         'this is the response from the get user content',

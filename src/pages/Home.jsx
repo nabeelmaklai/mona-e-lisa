@@ -31,6 +31,7 @@ const Home = () => {
     }
     const showArt = async () => {
       const response = await GetArt()
+      response.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       setArt(response)
     }
     showArt()
