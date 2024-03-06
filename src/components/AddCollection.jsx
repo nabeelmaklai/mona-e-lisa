@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createCollection } from '../services/Post'
 import { useNavigate } from 'react-router-dom'
-const AddCollection = ({ user }) => {
+const AddCollection = ({ user, setAddCollectionForm }) => {
   let navigate = useNavigate()
   const [addCollection, setAddCollection] = useState({
     name: '',
@@ -10,11 +10,14 @@ const AddCollection = ({ user }) => {
   })
   const handleAddCollection = async (event) => {
     event.preventDefault()
+    setAddCollectionForm(false)
+    console.log('Done')
     await createCollection({
       name: addCollection.name,
       description: addCollection.description,
       userId: user.id
     })
+
     navigate(`/user/${user.id}`)
   }
 
