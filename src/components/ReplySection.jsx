@@ -1,5 +1,7 @@
 import { useRef } from 'react'
 import Client from '../services/api'
+import SendIcon from '@mui/icons-material/Send';
+import { Avatar } from '@mui/material'
 
 const ReplySection = ({ comment, user, setReplayed }) => {
   let replyRef = useRef('')
@@ -20,13 +22,13 @@ const ReplySection = ({ comment, user, setReplayed }) => {
     <div hidden>
       <div className="replay-input">
         <input type="text" ref={replyRef} />
-        <button onClick={reply}>Reply</button>
+        <SendIcon onClick={reply}/>
       </div>
       {comment.replies.length ? (
         comment.replies.map((reply) => (
           <div key={reply._id}>
-            <h6>{reply.user.name}</h6>
-            <p>{reply.body}</p>
+            <h5><Avatar style={{ width: '21px', height: '21px' }}  />{reply.user.name}:</h5>
+            <p> {reply.body}</p>
           </div>
         ))
       ) : (
