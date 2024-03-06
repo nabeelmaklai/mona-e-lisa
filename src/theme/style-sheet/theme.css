@@ -300,6 +300,7 @@ main {
   flex-direction: column;
   margin-left: 10px;
 }
+
 .Following{
   position: fixed;
   
@@ -313,3 +314,8 @@ main {
 .profileDiv{
   margin-left: 50px;
 }
+
+.collection-art > a{ text-decoration: none;
+  
+}
+

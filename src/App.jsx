@@ -17,10 +17,12 @@ import './theme/style-sheet/theme.css'
 const App = () => {
   const [user, setUser] = useState(null)
   const [changedBio, setChangedBio] = useState(false)
+  let navigate = useNavigate
 
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
+    navigate('/')
   }
   const checkToken = async () => {
     const user = await CheckSession()
