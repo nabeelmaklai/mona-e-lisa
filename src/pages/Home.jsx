@@ -19,7 +19,6 @@ const Home = () => {
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
-    // console.log(user)
   }
 
   useEffect(() => {
@@ -32,16 +31,10 @@ const Home = () => {
     }
     const showArt = async () => {
       const response = await GetArt()
-      // console.log('this i sthe nhome function', response)
       setArt(response)
     }
     showArt()
   }, [])
-
-  const handleLogOut = () => {
-    setUser(null)
-    localStorage.clear()
-  }
 
   return (
     <div className="homepage">
@@ -69,7 +62,7 @@ const Home = () => {
       </div>
       <div className="homepage__timeline">
         {/* <Sugesstions /> */}
-        <FollowingList user={user} />
+        {user && <FollowingList user={user} />}
         {/* <Login setUser={setUser} /> */}
       </div>
     </div>
