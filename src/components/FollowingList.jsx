@@ -1,5 +1,19 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-const FollowingList = ({ following }) => {
+import Client from '../services/api'
+const FollowingList = ({ user }) => {
+  const [following, setFollowing] = useState([])
+
+  useEffect(() => {
+    if (user) {
+      const getFollowing = async () => {
+        const response = await Client.get(`/users/${user?.id}/following`)
+        setFollowing(response.data)
+        console.log('useEffect', following)
+      }
+      getFollowing()
+    }
+  }, [user])
   return following?.length ? (
     <div>
       {following?.map((user) => (
@@ -8,7 +22,9 @@ const FollowingList = ({ following }) => {
         </Link>
       ))}
     </div>
-  ) : (<></>)
+  ) : (
+    <></>
+  )
 }
 
 export default FollowingList

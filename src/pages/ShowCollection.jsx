@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { showCollection } from '../services/Get'
 import Client from '../services/api'
 import { Link } from 'react-router-dom'
 
 const ShowCollection = ({ user }) => {
+  let navigate = useNavigate()
   let { id } = useParams()
   const [collection, setCollection] = useState({})
   const [collectionArt, setCollectionArt] = useState([])
@@ -26,13 +27,20 @@ const ShowCollection = ({ user }) => {
     setRemoved(true)
   }
 
+  const deleteCollection = async () => {
+    await Client.delete(`/collections/${id}`)
+    navigate(`/user/${user.id}`)
+  }
+
   return (
     <div className="show-collection">
       <h4>
         {collection.name}[{collection.description}]
       </h4>
       <p></p>
-
+      {collection.userId === user.id && (
+        <button onClick={deleteCollection}>Delete</button>
+      )}
       {collectionArt.map((art) => (
         <div>
           <Link to={`/arts/${art._id}`}>
