@@ -16,6 +16,8 @@ import SideNav from './theme/SideNav'
 import './theme/style-sheet/theme.css'
 const App = () => {
   const [user, setUser] = useState(null)
+  const [changedBio, setChangedBio] = useState(false)
+
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
@@ -32,7 +34,7 @@ const App = () => {
       }
       checkTokenFunction()
     }
-  }, [])
+  }, [changedBio])
 
   return (
     <div className="AppDiv">
@@ -45,7 +47,15 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route
             path="/user/:id"
-            element={<User user={user} checkToken={checkToken} set={setUser} />}
+            element={
+              <User
+                user={user}
+                checkToken={checkToken}
+                set={setUser}
+                changedBio={changedBio}
+                setChangedBio={setChangedBio}
+              />
+            }
           />
           <Route path="/arts/:id" element={<ShowArt user={user} />} />
           <Route

@@ -69,7 +69,6 @@ const ShowArt = ({ user }) => {
   }
   const handleDeleteClick = (event) => {
     setDeleteCommentId(event)
-    console.log('this is the comment ID', event)
   }
   const handleDeleteComment = async (e) => {
     e.preventDefault()
