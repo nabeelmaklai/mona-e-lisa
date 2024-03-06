@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { createCollection } from '../services/Post'
+import { useNavigate } from 'react-router-dom'
 const AddCollection = ({ user }) => {
+  let navigate = useNavigate()
   const [addCollection, setAddCollection] = useState({
     name: '',
     description: '',
@@ -13,6 +15,7 @@ const AddCollection = ({ user }) => {
       description: addCollection.description,
       userId: user.id
     })
+    navigate(`/user/${user.id}`)
   }
 
   const hadleChange = (event) => {
@@ -20,6 +23,7 @@ const AddCollection = ({ user }) => {
       ...addCollection,
       [event.target.name]: event.target.value
     })
+    console.log('handle change in the add collection componenet')
   }
   return (
     <div>

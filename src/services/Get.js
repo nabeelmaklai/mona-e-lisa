@@ -5,12 +5,13 @@ export const GetArt = async () => {
     const response = await Client.get('/arts')
     return response.data
   } catch (error) {
-    throw error
+    // throw error
+    console.log('error', error)
   }
 }
 
 export const ShowContent = async (userId) => {
-  console.log(userId)
+  // console.log(userId)
   try {
     const response = await Client.get(`/users/${userId}`)
     return response.data
