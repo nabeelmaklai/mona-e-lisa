@@ -52,7 +52,7 @@ const App = () => {
             path="/collections/:id"
             element={<ShowCollection user={user} />}
           />
-          <Route path="/collections" element={<AddCollection user={user} />} />
+          {/* <Route path="/collections" element={<AddCollection user={user} />} /> */}
           <Route path="/arts/edit" element={<EditArt user={user} />} />
         </Routes>
       </main>
