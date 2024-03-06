@@ -110,6 +110,15 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
 
   return (
     <div>
+      <div className="post__headerAuthor">
+        <Avatar />
+        <h2 className="h2">{profile.name}</h2>
+      </div>
+
+      <div>Email: {profile.email}</div>
+      <br />
+      <div>Bio: {profile.bio}</div>
+
       {user ? (
         user.id === id && (
           <button onClick={handlEditBioForm}>Edit Your Bio</button>
@@ -119,41 +128,16 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
       )}
       {editBioForm && (
         <EditBio
+          profile={profile}
           user={user}
           handleSubmit={handleSubmit}
           setChangedBio={setChangedBio}
         />
       )}
+
       <button onClick={handlecollectionButton}>Collections</button>
 
       <button onClick={handleArtButton}>Art</button>
-
-      {showCollection &&
-        collections.map((collection) => (
-          <Link to={`/collections/${collection._id}`} key={collection._id}>
-            <p>Name:{collection.name}</p>
-            {collection.artIds.length ? (
-              <img
-                className="ShowArtImg  img-resize resize"
-                src={collection.artIds[0].img}
-                alt={collection.name}
-              />
-            ) : (
-              <></>
-            )}
-          </Link>
-        ))}
-
-      <div className="post__headerAuthor">
-        <Avatar />
-        <h2 className="h2">{profile.name}</h2>
-        <div>Email: {profile.email}</div>
-      </div>
-      <button onClick={handlecollectionButton}>Collections</button>
-
-      <div>Email: {profile.email}</div>
-      <br />
-      <div>Bio: {profile.bio}</div>
 
       {user ? (
         user.id !== id && (
@@ -180,6 +164,21 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
                   alt={piece.name}
                   key={piece._id}
                 />
+              </Link>
+            ))}
+
+          {showCollection &&
+            collections.map((collection) => (
+              <Link to={`/collections/${collection._id}`} key={collection._id}>
+                {collection.artIds.length ? (
+                  <img
+                    className="ShowArtImg  img-resize resize"
+                    src={collection.artIds[0].img}
+                    alt={collection.name}
+                  />
+                ) : (
+                  <></>
+                )}
               </Link>
             ))}
         </div>
