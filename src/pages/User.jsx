@@ -173,14 +173,14 @@ const User = ({ user, setUser }) => {
         ) : (
           <></>
         )}
-
+        {/* 
         {user ? (
           user.id === id && (
             <button onClick={handlEditBioForm}>Edit Your Bio</button>
           )
         ) : (
           <></>
-        )}
+        )} */}
 
         {addArtForm && (
           <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />

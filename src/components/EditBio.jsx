@@ -1,15 +1,23 @@
 import { useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 const EditBio = () => {
-  const [editArtForm, setEditArtForm] = useState({
+  const [editBioForm, setEditBioForm] = useState({
     name: '',
     bio: ''
   })
-  const handleAddCollection = () => {}
-  const hadleChange = () => {}
+  let { id } = useParams()
+  const handleSubmit = async () => {
+    await Client.put(`/users/${id}`)
+  }
+
+  const hadleChange = (event) => {
+    setEditBioForm({ ...editBioForm, [event.target.name]: event.target.value })
+    console.log(event.target.value)
+  }
 
   return (
     <div>
-      <form action="" onSubmit={handleAddCollection}>
+      <form action="" onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input type="text" name="name" onChange={hadleChange} />
         <label htmlFor="bio">Description</label>
