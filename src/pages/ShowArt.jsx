@@ -8,7 +8,10 @@ import EditArt from '../components/EditArt'
 import CollectionsIcon from '@mui/icons-material/Collections'
 import SendIcon from '@mui/icons-material/Send'
 import ReplySection from '../components/ReplySection'
-import EditIcon from '@mui/icons-material/Edit'
+
+import EditIcon from '@mui/icons-material/Edit';
+import ReplyIcon from '@mui/icons-material/Reply';
+
 const ShowArt = ({ user }) => {
   const [update, setUpdate] = useState(false)
 
@@ -146,7 +149,7 @@ const ShowArt = ({ user }) => {
 
       <div className="comments-section">
         {user && (
-          <div>
+          <div className='commentsInput'>
             {' '}
             <input type="text" ref={commentRef.body} />
             <input
@@ -154,8 +157,9 @@ const ShowArt = ({ user }) => {
               hidden
               ref={commentRef.userId}
               value={user.id}
-            />
-            <SendIcon onClick={addComment} />
+
+            /> <SendIcon onClick={addComment}/>
+
           </div>
         )}
         {art.commentIds.map((comment) => (
@@ -164,7 +168,8 @@ const ShowArt = ({ user }) => {
             <br />
             {comment.body}
             <div>
-              <button onClick={showReplies}>Replies</button>
+              <ReplyIcon onClick={showReplies}/>
+        
               <ReplySection
                 comment={comment}
                 user={user}

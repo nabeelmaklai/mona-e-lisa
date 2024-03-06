@@ -25,7 +25,7 @@ const LikeButton = ({ user, art }) => {
   }
 
   return liked ? (
-    <div >
+    <div className='heart' >
       <FavoriteIcon onClick={removeLike} style={{ color: 'red' }} /> <span style={{ color: 'white' }}> {art.likes.length} </span>
     </div>
   ) : (
