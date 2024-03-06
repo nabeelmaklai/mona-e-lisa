@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Client from '../services/api'
-const EditBio = ({ user, setChangedBio, handleSubmit }) => {
+const EditBio = ({ user, setChangedBio, handleSubmit, profile }) => {
   const [editBioForm, setEditBioForm] = useState({
-    name: '',
-    bio: ''
+    name: profile.name,
+    bio: profile.bio
   })
   let { id } = useParams()
   const onSubmit = async (event) => {
@@ -24,9 +24,19 @@ const EditBio = ({ user, setChangedBio, handleSubmit }) => {
     <div>
       <form action="" onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
-        <input type="text" name="name" onChange={hadleChange} />
+        <input
+          type="text"
+          name="name"
+          onChange={hadleChange}
+          value={editBioForm.name}
+        />
         <label htmlFor="bio">Description</label>
-        <input type="text" name="bio" onChange={hadleChange} />
+        <input
+          type="text"
+          name="bio"
+          onChange={hadleChange}
+          value={editBioForm.bio}
+        />
         <button>Submit</button>
       </form>
     </div>
