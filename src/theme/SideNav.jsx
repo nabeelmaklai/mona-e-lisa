@@ -69,6 +69,6 @@ const SideNav = ({ user, handleLogOut }) => {
     </div>
   )
 
-  return <header className="aboveSidenav">{user ? userOptions : publicOptions}</header>
+  return <div className="aboveSidenav">{user ? userOptions : publicOptions}</div>
 }
 export default SideNav

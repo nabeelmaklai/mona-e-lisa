@@ -185,6 +185,9 @@ input:focus {
   margin-left: 10px;
   color: white;
 }
+a {
+  text-decoration: none;
+}
 
 /* .AppDiv>main{
   width: 8vw;
@@ -205,7 +208,14 @@ input:focus {
 }
 .aboveSidenav {
   /* display: flex; */
-  width: 180px;
+  margin-left: 40px;
+  margin-right: 100px;
+  margin-top: 50px;
+
+}
+.aboveSidenav a{
+  font-size: 25px !important;
+  
 }
 .profileImgDiv {
   /* display: flex; */
@@ -315,6 +325,7 @@ main {
   margin-left: 10px;
 }
 
+<<<<<<< HEAD
 .bioDiv {
   display: flex;
   justify-content: space-between;
@@ -350,3 +361,23 @@ main {
   align-items: center;
   gap: 1em;
 }
+=======
+.Following{
+  position: fixed;
+  
+    margin-top: 75px;
+
+}
+.PostFlexDiv{
+  margin-left: 140px;
+    margin-right: 100px;
+}
+.profileDiv{
+  margin-left: 50px;
+}
+
+.collection-art > a{ text-decoration: none;
+  
+}
+
+>>>>>>> 9e19995b740e5aa8207df664e9d470ded394c4ef

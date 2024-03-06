@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { showCollection } from '../services/Get'
 import Client from '../services/api'
 import { Link } from 'react-router-dom'
-
+import DeleteIcon from '@mui/icons-material/Delete'
 const ShowCollection = ({ user }) => {
   let navigate = useNavigate()
   let { id } = useParams()
@@ -34,25 +34,27 @@ const ShowCollection = ({ user }) => {
 
   return (
     <div className="show-collection">
+      {collection.userId === user.id && (
+        <button onClick={deleteCollection}>Delete Collection</button>
+      )}
       <h4>
-        {collection.name}[{collection.description}]
+        {collection.name} {collection.description}
       </h4>
       <p></p>
-      {collection.userId === user.id && (
-        <button onClick={deleteCollection}>Delete</button>
-      )}
+
       {collectionArt.map((art) => (
-        <div>
+        <div class="collection-art">
           <Link to={`/arts/${art._id}`}>
             <img
-              className="ShowArtImg  img-resize resize"
+              className="ShowArtImg  img-resize"
               src={art.img}
               alt={art.name}
             />
+            {collection.userId === user.id && (
+              <DeleteIcon onClick={() => remove(art._id)} />
+            )}
           </Link>
-          {collection.userId === user.id && (
-            <button onClick={() => remove(art._id)}>Remove</button>
-          )}
+          <br />
         </div>
       ))}
     </div>
