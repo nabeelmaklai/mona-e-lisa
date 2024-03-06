@@ -185,7 +185,7 @@ const ShowArt = ({ user }) => {
             {user ? (
               comment.userId._id === user.id && (
                 <form onSubmit={handleDeleteComment}>
-                  <DeleteIcon onClick={() => {
+                  <DeleteIcon style={{color:'red'}} onClick={() => {
                       handleDeleteClick(comment._id)
                     }}/>
                  
