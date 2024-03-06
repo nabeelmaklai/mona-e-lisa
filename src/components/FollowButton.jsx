@@ -5,7 +5,7 @@ const FollowButton = ({ profile, user, setUser, following, setFollowing }) => {
     await Client.put(`/users/${user.id}/follow`, { userId: profile._id })
     const tempUser = user
     tempUser.following.push(profile)
-    setUser(tempUser)
+    // setUser(tempUser)
     setFollowing(true)
   }
 

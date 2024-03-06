@@ -6,10 +6,12 @@ import AddToCollection from '../components/AddToCollection'
 import LikeButton from '../components/LikeButton'
 import EditArt from '../components/EditArt'
 import CollectionsIcon from '@mui/icons-material/Collections';
-
+import SendIcon from '@mui/icons-material/Send';
 import ReplySection from '../components/ReplySection'
-
+import EditIcon from '@mui/icons-material/Edit';
 const ShowArt = ({ user }) => {
+  const [update,setUpdate]=useState(false)
+
   let { id } = useParams()
   const [art, setArt] = useState(null)
   const [commented, setCommented] = useState(false)
@@ -36,9 +38,12 @@ const ShowArt = ({ user }) => {
       setCommented(false)
       setDeleted(false)
       setReplayed(false)
+     setUpdate(false)
     }
+   
     getArt()
-  }, [commented, editArt, replayed])
+     
+  }, [commented, editArt, replayed,update])
 
   const addComment = async () => {
     const comment = {
@@ -81,6 +86,7 @@ const ShowArt = ({ user }) => {
   const hadleEditSubmit = async (e) => {
     e.preventDefault()
     await Client.put(`/arts/${id}`, editArtForm)
+    setUpdate(true)
 
     // console.log('This is the handle submit button for the edits')
   }
@@ -94,15 +100,13 @@ const ShowArt = ({ user }) => {
   return art ? (
     <div className="show-art">
       
-
-      <h5>{art.userId.name}</h5>
-      <h5>{art.userIds}</h5>
-
-      <h4>{art.name}</h4>
+      {/* <h5>Name: {art.userId.name}</h5> */}
+      
 
       {user ? (
         art.userId._id === user.id && (
-          <button onClick={handleEditClick}>Edit</button>
+          <div className='EditBtnDiv' >
+         <EditIcon onClick={handleEditClick}/> </div>
         )
       ) : (
         <></>
@@ -111,23 +115,27 @@ const ShowArt = ({ user }) => {
         <EditArt
           hadleEditChange={hadleEditChange}
           hadleEditSubmit={hadleEditSubmit}
+          setUpdate={setUpdate}
         />
       )}
 
-      <div className="ShowArtImgDiv" >      <img className="ShowArtImg img-resize"  src={art.img} alt={art.userId.name} />
+      <div className="ShowArtImgDiv" >  
+      <h4>Name: {art.name}</h4> 
+        <img className="ShowArtImg img-resize"  src={art.img} alt={art.userId.name} />
 
-      </div>
-      <div>
-      {user && <LikeButton user={user} art={art} />}</div>
       
-      <div className="add-to-collection">
+      <div className='underTheImgArt'>
+      {user && <LikeButton user={user} art={art} />}
+      
+      {/* <div className="add-to-collection"> */}
         {user && <CollectionsIcon onClick={showAddCollection}/> }
 
         {showCollection && <AddToCollection  user={user} artId={id} />}
+      {/* </div> */}
       </div>
       {/* <p>hello{art.userId._id}</p> */}
       <p><b>{art.userId.name}</b> {art.description}</p>
-
+</div>
       
       <div className="comments-section">
         {user && (
@@ -139,12 +147,9 @@ const ShowArt = ({ user }) => {
               hidden
               ref={commentRef.userId}
               value={user.id}
-            />
-            <section>
-              <button className="commentBtn" onClick={addComment}>
-                Comment
-              </button>
-            </section>
+            /><SendIcon onClick={addComment}/>
+            
+           
           </div>
         )}
 
