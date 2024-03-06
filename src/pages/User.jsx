@@ -102,8 +102,9 @@ const User = ({ user }) => {
       {showCollection &&
         collections.map((collection) => (
           <Link to={`/collections/${collection._id}`} key={collection._id}>
-            <img src={collection.artIds[0].img} alt={collection.name} />
-            <p>Name:{collection.name}</p>
+             <p>Name:{collection.name}</p>
+            <img className='ShowArtImg  img-resize resize' src={collection.artIds[0].img} alt={collection.name} />
+           
           </Link>
         ))}
 
