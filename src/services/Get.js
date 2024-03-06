@@ -11,7 +11,7 @@ export const GetArt = async () => {
 }
 
 export const ShowContent = async (userId) => {
-  console.log(userId)
+  // console.log(userId)
   try {
     const response = await Client.get(`/users/${userId}`)
     return response.data
