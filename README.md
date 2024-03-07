@@ -23,6 +23,11 @@ These objects will be seamlessly queried and rendered using React amd the Expres
 The deployed [version](https://monaelisa.surge.sh/) of the app has a landing page displaying all the art uploaded by other users. unregistered and not logged in users can still view the art, the comments and replies associated. 
 > ![Alt text](https://github.com/nabeelmaklai/mona-e-lisa/blob/main/images/view-art.png)
 
+When users register and sign in, the landing page is teh same except this time, on the righ hand side, the artists followed by the user will be displayed.
+
+> ![Alt text](https://github.com/nabeelmaklai/mona-e-lisa/blob/main/images/signed-in.png
+
+
 
  
 ## :computer: Technologies Used
