@@ -21,6 +21,7 @@ These objects will be seamlessly queried and rendered using React amd the Expres
 
 ## Deployed version
 The deployed [version](https://monaelisa.surge.sh/) of the app has a landing page displaying all the art uploaded by other users. unregistered and not logged in users can still view the art, the comments and replies associated. 
+(https://github.com/nabeelmaklai/mona-e-lisa/blob/main/images/view-art.png)
 
  
 ## :computer: Technologies Used
