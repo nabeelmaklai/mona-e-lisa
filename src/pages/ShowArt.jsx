@@ -47,7 +47,7 @@ const ShowArt = ({ user }) => {
       setCommented(false)
       setDeleted(false)
       setReplayed(false)
-      setUpdate(false)
+      // setUpdate(false)
     }
 
     getArt()
