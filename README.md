@@ -20,7 +20,7 @@ As users interact with the platform, adding artworks to their galleries and coll
 These objects will be seamlessly queried and rendered using React amd the ExpressJS framework, providing users with an immersive digital art viewing experience.
 
 ## Deployed version
-
+The deployed [version](https://monaelisa.surge.sh/) of the app has a landing page displaying all the art uploaded by other users. unregistered and not logged in users can still view the art, the comments and replies associated. 
 
  
 ## :computer: Technologies Used
