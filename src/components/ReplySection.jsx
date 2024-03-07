@@ -19,7 +19,7 @@ const ReplySection = ({ comment, user, setReplayed, id }) => {
   }
 
   return (
-    <div>
+    <div hidden>
       {user ? (
         <div className="replay-input">
           <input type="text" ref={replyRef} />
@@ -28,7 +28,6 @@ const ReplySection = ({ comment, user, setReplayed, id }) => {
       ) : (
         <></>
       )}
-
 
       {comment.replies.length ? (
         comment.replies.map((reply) => (
