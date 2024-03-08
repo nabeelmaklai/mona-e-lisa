@@ -133,13 +133,7 @@ input:focus {
   width: 100%;
   border-radius: 6px;
   border: 0.6px solid rgba(128, 128, 128, 0.516);
-  /* height :400px;
-  object-fit:cover;
-  object-position: center;
-  width:500px */
-
-  /* height: 40%;
-  display: flex; */
+  
 }
 .HomeArtImgss {
   height: 400px;
@@ -149,24 +143,7 @@ input:focus {
   border-radius: 6px;
   border: 3px solid rgba(128, 128, 128, 0.516);
 }
-/* h2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-   font-weight: bolder; 
-  transition-duration: .3s; 
-  position: absolute; 
-  position: relative; 
-  text-decoration: none;} 
- */
 
-/* h2 >a{
-  text-decoration: none;
-} */
-/* .post__image{
-
-
-} */
 .post__header {
   display: flex;
   /* justify-content: ; */
@@ -240,13 +217,8 @@ a {
   /* margin :0 0.5rem 1rem 0; */
   object-fit: cover;
 }
-/* .ShowArtImgDiv{
-  width : 30% ;
-  aspect-ratio: 1; 
-} */
+
 .ShowArtImg {
-  /* width: 100vw; */
-  /* aspect-ratio: ; */
   border-radius: 6px;
   border: 3px solid rgba(255, 255, 255, 0.516);
 }
@@ -255,7 +227,6 @@ a {
 
   width: 500px;
   object-position: center;
-  /* object-fit:fill; */
   object-fit: cover;
 }
 .resize {
@@ -268,13 +239,8 @@ svg {
 }
 .add-to-collection {
   display: flex;
-  /* align-content: flex-end; */
 }
 .centers {
-  /* display:;
-  justify-content: center; */
-  /* align-self: center;
-   */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -285,17 +251,11 @@ main {
 .underTheImgArt {
   display: flex;
   justify-content: end;
-  /* margin-right: 12px; */
 }
 .show-art {
   display: flex;
   justify-content: center;
 }
-/* .EditBtn{
-  
-  height :100px;
-  margin-top:120px;
-  } */
 
 .EditBtnDiv {
   display: flex;
@@ -317,6 +277,12 @@ main {
   /* width: 30px; */
   display: flex;
   align-items: center;
+}
+.replay-input{
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  margin:10px
 }
 .commentsInput > input {
   padding: 9px;
@@ -380,37 +346,31 @@ main {
 .collection-art > a {
   color: #eaeeed;
 }
-.body{
-margin:0;
-padding: 0;
-display: flex;
-align-items: center;
+.body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 
-/* background-color: #eaeeed;/ */
 }
-.scroll-div{
+.scroll-div {
   width: 400px;
   border-radius: 12px;
   box-shadow: rgba(50, 50, 93, 0, 25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  
-
 
   height: 470px;
   overflow: hidden;
   overflow-y: scroll;
   margin-bottom: 16px;
 }
-.scroll-object{
-color: wheat;
-font-family: cursive;
-/* font-size: 1px; */
-padding: 20px;
+.scroll-object {
+  color: rgb(175, 175, 175);
+  padding: 20px;
 }
-.scroll-bg{
-  background-color: rgb(40, 39, 39);
+.scroll-bg {
+  background-color: rgba(29, 29, 29, 0.801);
   width: 380px;
-  /* margin: auto; */
   padding: 30px;
   border-radius: 30px;
 }
