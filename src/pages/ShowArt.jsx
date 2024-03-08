@@ -151,8 +151,9 @@ const ShowArt = ({ user }) => {
         <p>
           <b>{art.userId.name}</b> {art.description}
         </p>
+        </div>
 
-<section className='body'>
+  <section className='body'>
       {/* <div className="comments-section "> */}
         <div className='scroll-div'>
         <div className='scroll-object'>
@@ -198,23 +199,32 @@ const ShowArt = ({ user }) => {
                               handleDeleteClick(comment._id)
                             }}
                           />
+                          
                         </button>
                       </form>
+                      
+                      
                     )
                   ) : (
                     <></>
                   )}
                 </div>
+                
               ))}
 
             </div>
           </div>
         </div>
+       
       </section>
     </div>
+   
   ) : (
-    <></>
-  )
+     
+    <></> 
+    )
+   
+ 
 }
 
 export default ShowArt
