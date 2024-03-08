@@ -36,7 +36,7 @@ Logged in users can view each piece of art individually along with the associate
 
 ## Future Enhancements
 
-some potential future enhancements include:
+Some potential future enhancements include:
 
 - Adding art work through quering and API
 - implementing an AI API that generates art using prompts by the user
