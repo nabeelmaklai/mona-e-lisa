@@ -1,16 +1,8 @@
-// import User from "./User"
-import Client from '../services/api'
 import { GetArt } from '../services/Get'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { CheckSession } from '../services/Auth'
-
 import { Avatar } from '@mui/material'
-import SideNav from '../theme/SideNav'
-import Sugesstions from '../theme/Sugesstions'
-import Login from './Login'
-import Register from './Register'
 import FollowingList from '../components/FollowingList'
 const Home = () => {
   const [art, setArt] = useState([])
@@ -63,7 +55,7 @@ const Home = () => {
       </div>
       <div className="homepage__timeline">
         {/* <Sugesstions /> */}
-        
+
         {user && <FollowingList user={user} />}
         {/* <Login setUser={setUser} /> */}
       </div>

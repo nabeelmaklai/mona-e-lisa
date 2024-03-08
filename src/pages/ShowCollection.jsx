@@ -16,7 +16,6 @@ const ShowCollection = ({ user }) => {
       const response = await showCollection(id)
       setCollection(response)
       setCollectionArt(response.artIds)
-      console.log('this is the response from show collection', response.artIds)
     }
     getCollection()
     setRemoved(false)
