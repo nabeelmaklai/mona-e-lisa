@@ -139,7 +139,8 @@ const ShowArt = ({ user }) => {
         <p>
           <b>{art.userId.name}</b> {art.description}
         </p>
-
+        </div>
+           
         <section className="body">
           <div className="scroll-div">
             <div className="scroll-object">
@@ -203,9 +204,13 @@ const ShowArt = ({ user }) => {
         </section>
       </div>
     </div>
+   
   ) : (
-    <></>
-  )
+     
+    <></> 
+    )
+   
+ 
 }
 
 export default ShowArt
