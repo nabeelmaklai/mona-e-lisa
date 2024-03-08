@@ -139,78 +139,72 @@ const ShowArt = ({ user }) => {
         <p>
           <b>{art.userId.name}</b> {art.description}
         </p>
-        </div>
-           
-        <section className="body">
-          <div className="scroll-div">
-            <div className="scroll-object">
-              <div className="scroll-bg">
-                {user && (
-                  <div className="commentsInput">
-                    {' '}
-                    <input
-                      placeholder="Write a comment"
-                      type="text"
-                      ref={commentRef.body}
+      </div>
+      <section className="body">
+        <div className="scroll-div">
+          <div className="scroll-object">
+            <div className="scroll-bg">
+              {user && (
+                <div className="commentsInput">
+                  {' '}
+                  <input
+                    placeholder="Write a comment"
+                    type="text"
+                    ref={commentRef.body}
+                  />
+                  <input
+                    type="hidden"
+                    hidden
+                    ref={commentRef.userId}
+                    value={user.id}
+                  />{' '}
+                  <SendIcon onClick={addComment} />
+                </div>
+              )}
+              {art.commentIds.map((comment) => (
+                <div className="commentDiv" key={comment._id}>
+                  <div className="post__headerAuthor">
+                    <Avatar style={{ width: '21px', height: '21px' }} />
+                    <h4 className="h2">{comment.userId.name}</h4>:{' '}
+                    {comment.body}
+                  </div>
+
+                  <div>
+                    <ReplyIcon onClick={showReplies} />
+
+                    <ReplySection
+                      comment={comment}
+                      user={user}
+                      setReplayed={setReplayed}
+                      id={id}
                     />
-                    <input
-                      type="hidden"
-                      hidden
-                      ref={commentRef.userId}
-                      value={user.id}
-                    />{' '}
-                    <SendIcon onClick={addComment} />
                   </div>
-                )}
-                {art.commentIds.map((comment) => (
-                  <div className="commentDiv" key={comment._id}>
-                    <div className="post__headerAuthor">
-                      <Avatar style={{ width: '21px', height: '21px' }} />
-                      <h4 className="h2">{comment.userId.name}</h4>:{' '}
-                      {comment.body}
-                    </div>
-
-                    <div>
-                      <ReplyIcon onClick={showReplies} />
-
-                      <ReplySection
-                        comment={comment}
-                        user={user}
-                        setReplayed={setReplayed}
-                        id={id}
-                      />
-                    </div>
-                    {user ? (
-                      comment.userId._id === user.id && (
-                        <form onSubmit={handleDeleteComment}>
-                          <button className="black">
-                            <DeleteIcon
-                              style={{ color: 'red' }}
-                              onClick={() => {
-                                handleDeleteClick(comment._id)
-                              }}
-                            />
-                          </button>
-                        </form>
-                      )
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                ))}
-              </div>
+                  {user ? (
+                    comment.userId._id === user.id && (
+                      <form onSubmit={handleDeleteComment}>
+                        <button className="black">
+                          <DeleteIcon
+                            style={{ color: 'red' }}
+                            onClick={() => {
+                              handleDeleteClick(comment._id)
+                            }}
+                          />
+                        </button>
+                      </form>
+                    )
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
-   
   ) : (
-     
-    <></> 
-    )
-   
- 
+    <></>
+  )
 }
 
 export default ShowArt
