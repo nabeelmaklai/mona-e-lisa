@@ -155,8 +155,8 @@ const ShowArt = ({ user }) => {
         {user && (
           <div className="commentsInput">
             {' '}
-            <input type="text" ref={commentRef.body} />
-            <input
+            <input placeholder='Write a comment' type="text" ref={commentRef.body} />
+            <input 
               type="hidden"
               hidden
               ref={commentRef.userId}

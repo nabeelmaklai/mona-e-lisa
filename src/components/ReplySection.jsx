@@ -22,8 +22,8 @@ const ReplySection = ({ comment, user, setReplayed, id }) => {
     <div>
       {user ? (
         <div className="replay-input">
-          <input type="text" ref={replyRef} />
-          <SendIcon onClick={reply} />
+          <input  placeholder='reply' type="text" ref={replyRef} /><SendIcon onClick={reply} />
+          
         </div>
       ) : (
         <></>
