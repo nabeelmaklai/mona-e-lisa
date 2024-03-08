@@ -17,9 +17,9 @@ The digital art gallery application will use the ExpressJS framework in alongsid
 
 As users interact with the platform, adding artworks to their galleries and collections, corresponding artwork objects are generated and stored in the database. To prevent duplication, each artwork is tagged with a unique identifier. Collections are represented as referenced object IDs within the user object, while the collection objects contains referenced object IDs of associated artworks.
 
-These objects are queried and rendered using React and the ExpressJS framework, providing users with an immersive digital art viewing experience. Additional functionality of the site includes the ability to follow users, comment on art work, like a piece of artwork and reply to comments on art work. The additional functionalities utilize schemas and referenced object IDs to function. For example, when a user follows another user, the obejct ID of the follwer is appended to the array of followers in the user's schema. 
+These objects are queried and rendered using React and the ExpressJS framework, providing users with an immersive digital art viewing experience. Additional functionality of the site includes the ability to follow users, comment on art work, like a piece of artwork and reply to comments on art work. The additional functionalities utilize schemas and referenced object IDs to function. For example, when a user follows another user, the obejct ID of the follwer is appended to the array of followers in the user's schema. the back-end of the app can be found [here](https://github.com/nabeelmaklai/mona-e-lisa-backend )
 
-> ![Alt text](https://github.com/nabeelmaklai/mona-e-lisa/blob/main/images/mona-e-lisa%20code.png)
+> ![Alt text](https://github.com/nabeelmaklai/mona-e-lisa/blob/main/images/follow-back-end.png)
 
 
 ## Deployed version
@@ -34,6 +34,13 @@ Logged in users can view each piece of art individually along with the associate
 
 > ![Alt text](https://github.com/nabeelmaklai/mona-e-lisa/blob/main/images/profile-page.png)
 
+## Future Enhancements
+
+some potential future enhancements include:
+
+- Adding art work through quering and API
+- implementing an AI API that generates art using prompts by the user
+- Addtional authentication methods using Google OAuth
 
 
  
