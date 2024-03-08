@@ -1,12 +1,11 @@
 import { ShowContent } from '../services/Get'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { addArt } from '../services/Post'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import AddArt from '../components/AddArt'
 import FollowButton from '../components/FollowButton'
 import { Avatar } from '@mui/material'
-import ShowCollection from './ShowCollection'
 import AddCollection from '../components/AddCollection'
 import EditBio from '../components/EditBio'
 import Client from '../services/api'
@@ -51,10 +50,6 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       )
       setArt(response.artIds)
-      console.log(
-        'this is the response from the get user content',
-        response.bio
-      )
       setCollections(response.collectionIds)
       setProfile(response)
     }
@@ -108,15 +103,6 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
   const handleArtButton = (e) => {
     setShowArts(true)
     setShowCollection(false)
-  }
-
-  const navigateToAddCollection = () => {
-    navigate('/collections')
-  }
-  {
-    addArtForm && (
-      <AddArt handleAddArt={handleAddArt} hadleChange={hadleChange} />
-    )
   }
 
   return (
@@ -229,10 +215,4 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
     </div>
   )
 }
-//
 export default User
-
-{
-  /* <button onClick={handlEditBioForm}>Edit Your Bio</button> */
-}
-//

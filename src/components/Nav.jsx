@@ -19,7 +19,6 @@ const Nav = ({ user, handleLogOut }) => {
   const publicOptions = (
     <nav>
       <Link to="/">Home</Link>
-      {/* <Link to="/user/:id">profile</Link> */}
       <Link to="/login">login</Link>
       <Link to="/register">Register</Link>
     </nav>
