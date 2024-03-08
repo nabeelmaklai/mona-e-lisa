@@ -380,34 +380,32 @@ main {
 .collection-art > a {
   color: #eaeeed;
 }
-.body{
-margin:0;
-padding: 0;
-display: flex;
-align-items: center;
+.body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 
-/* background-color: #eaeeed;/ */
+  /* background-color: #eaeeed;/ */
 }
-.scroll-div{
+.scroll-div {
   width: 400px;
   border-radius: 12px;
   box-shadow: rgba(50, 50, 93, 0, 25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  
-
 
   height: 470px;
   overflow: hidden;
   overflow-y: scroll;
   margin-bottom: 16px;
 }
-.scroll-object{
-color: wheat;
-font-family: cursive;
-/* font-size: 1px; */
-padding: 20px;
+.scroll-object {
+  color: wheat;
+  /* font-family: cursive; */
+  /* font-size: 1px; */
+  padding: 20px;
 }
-.scroll-bg{
+.scroll-bg {
   background-color: rgb(40, 39, 39);
   width: 380px;
   /* margin: auto; */
