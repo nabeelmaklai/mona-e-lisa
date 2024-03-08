@@ -12,7 +12,7 @@ import ReplySection from '../components/ReplySection'
 import EditIcon from '@mui/icons-material/Edit'
 import ReplyIcon from '@mui/icons-material/Reply'
 import { Avatar } from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/Delete'
 const ShowArt = ({ user }) => {
   const [update, setUpdate] = useState(false)
 
@@ -48,6 +48,10 @@ const ShowArt = ({ user }) => {
       setDeleted(false)
       setReplayed(false)
       setUpdate(false)
+      setEditArtForm({
+        name: response.name,
+        description: response.description
+      })
     }
 
     getArt()
@@ -122,6 +126,7 @@ const ShowArt = ({ user }) => {
           hadleEditChange={hadleEditChange}
           hadleEditSubmit={hadleEditSubmit}
           setUpdate={setUpdate}
+          art={editArtForm}
         />
       )}
 
@@ -146,7 +151,7 @@ const ShowArt = ({ user }) => {
         <p>
           <b>{art.userId.name}</b> {art.description}
         </p>
-      </div>
+
 <section className='body'>
       {/* <div className="comments-section "> */}
         <div className='scroll-div'>
@@ -181,26 +186,31 @@ const ShowArt = ({ user }) => {
                 setReplayed={setReplayed}
                 id={id}
               />
-            </div>
-            {user ? (
-              comment.userId._id === user.id && (
-                <form onSubmit={handleDeleteComment}>
-                  <DeleteIcon style={{color:'red'}} onClick={() => {
-                      handleDeleteClick(comment._id)
-                    }}/>
-                 
-                </form>
-              )
-            ) : (
-              <></>
-            )}
-          </div>
-        ))}
-      </div>
-      </div>
-      </div>
-      </section>
 
+                  </div>
+                  {user ? (
+                    comment.userId._id === user.id && (
+                      <form onSubmit={handleDeleteComment}>
+                        <button className="black">
+                          <DeleteIcon
+                            style={{ color: 'red' }}
+                            onClick={() => {
+                              handleDeleteClick(comment._id)
+                            }}
+                          />
+                        </button>
+                      </form>
+                    )
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              ))}
+
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   ) : (
     <></>

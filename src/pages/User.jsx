@@ -26,6 +26,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
   const [showArts, setShowArts] = useState(true)
   const [editBioForm, setEditBioForm] = useState(false)
   const [updateProfile, setUpdateProfile] = useState(false)
+  const [addedArt, setAddedArt] = useState(false)
 
   const [newArt, setNewArt] = useState({
     name: '',
@@ -59,7 +60,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
     }
 
     getUserContent()
-  }, [id, user, following, showCollection, changedBio, updateProfile])
+  }, [id, user, following, showCollection, changedBio, updateProfile, addedArt])
 
   const handleSubmit = async (editBioForm) => {
     try {
@@ -83,6 +84,7 @@ const User = ({ user, setUser, changedBio, setChangedBio }) => {
       img: newArt.img,
       userId: user.id
     })
+    setAddedArt(true)
   }
 
   const handleAddArtButton = () => {
