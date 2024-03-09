@@ -12,7 +12,8 @@ import Sugesstions from '../theme/Sugesstions'
 import Login from './Login'
 import Register from './Register'
 import FollowingList from '../components/FollowingList'
-const Home = () => {
+
+const Home = ({handleLogOut}) => {
   const [art, setArt] = useState([])
   const [user, setUser] = useState(null)
 
@@ -39,6 +40,8 @@ const Home = () => {
 
   return (
     <div className="homepage">
+      
+      {/* <div><SideNav user={user} handleLogOut={handleLogOut} /></div> */}
       <div className="PostFlexDiv">
         {art.map((art) => (
           <div className="post" key={art._id}>

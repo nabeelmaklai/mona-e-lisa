@@ -40,9 +40,11 @@ const App = () => {
 
   return (
     <div className="AppDiv">
-      <SideNav user={user} handleLogOut={handleLogOut} />
-      <main>
+      
+      <main> 
+        <SideNav user={user} handleLogOut={handleLogOut} />
         <Routes>
+         
           <Route path="/" element={<Home user={user} />} />
 
           <Route path="/login" element={<Login setUser={setUser} />} />

@@ -12,8 +12,8 @@ const SideNav = ({ user, handleLogOut }) => {
   // console.log(user.id);
   if (user) {
     userOptions = (
-      <div className="aboveSidenav">
-      <div className="sidenav">
+      <div className="aboveSidenav" >
+      <div className="sidenav"> 
         <div className="sidenav__buttons">
           <button className="sidenav__button">
             <HomeIcon />
@@ -43,7 +43,7 @@ const SideNav = ({ user, handleLogOut }) => {
     )
   }
   const publicOptions = (
-    <div className="sidenav">
+    <div>
       <button className="sidenav__button">
         <HomeIcon />
         <span>
@@ -69,6 +69,6 @@ const SideNav = ({ user, handleLogOut }) => {
     </div>
   )
 
-  return <div className="aboveSidenav">{user ? userOptions : publicOptions}</div>
+  return <div className="Following" >{user ? userOptions : publicOptions}</div>
 }
 export default SideNav

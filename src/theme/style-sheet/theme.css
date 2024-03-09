@@ -1,11 +1,13 @@
 .black {
-  background-color: rgb(23, 23, 23);
+  background-color: black;
   border: none;
 }
 
 html {
   background-color: black;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 .form {
   display: flex;
@@ -116,7 +118,7 @@ input:focus {
   margin: 5px 10px 5px 10px;
   padding: 10px 15px 10px 15px;
   border-radius: 15px;
-  width: 100%;
+  /* width: 100%; */
 }
 .sidenav__button:hover {
   cursor: pointer;
@@ -185,8 +187,11 @@ a {
 }
 .aboveSidenav {
   /* display: flex; */
-  margin-left: 40px;
-  margin-right: 100px;
+    margin-right: 400px;
+display: flex;
+justify-content:center ;
+  /* margin-right: 400px; */
+
   margin-top: 50px;
 }
 .aboveSidenav a {
@@ -246,7 +251,7 @@ svg {
   justify-content: center;
 }
 main {
-  width: 100%;
+  width:100%;
 }
 .underTheImgArt {
   display: flex;
@@ -277,12 +282,6 @@ main {
   /* width: 30px; */
   display: flex;
   align-items: center;
-}
-.replay-input{
-  display: flex;
-  align-items: center;
-  padding: 6px;
-  margin:10px
 }
 .commentsInput > input {
   padding: 9px;
@@ -363,9 +362,10 @@ main {
   overflow: hidden;
   overflow-y: scroll;
   margin-bottom: 16px;
+
 }
 .scroll-object {
-  color: rgb(175, 175, 175);
+  color: wheat;
   padding: 20px;
 }
 .scroll-bg {
