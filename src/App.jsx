@@ -1,16 +1,13 @@
-// import "./App.css"
 import { useNavigate } from 'react-router-dom'
 import Register from './pages/Register'
 import { Route, Routes } from 'react-router'
 import Login from './pages/Login'
-import Nav from './components/Nav'
 import User from './pages/User'
 import ShowArt from './pages/ShowArt'
 import ShowCollection from './pages/ShowCollection'
 import { useEffect, useState } from 'react'
 import Home from './pages/Home'
 import { CheckSession } from './services/Auth'
-import AddCollection from './components/AddCollection'
 import EditArt from './components/EditArt'
 import SideNav from './theme/SideNav'
 import './theme/style-sheet/theme.css'
@@ -66,7 +63,6 @@ const App = () => {
             path="/collections/:id"
             element={<ShowCollection user={user} />}
           />
-          {/* <Route path="/collections" element={<AddCollection user={user} />} /> */}
           <Route path="/arts/edit" element={<EditArt user={user} />} />
         </Routes>
       </main>

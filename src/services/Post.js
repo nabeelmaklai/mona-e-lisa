@@ -10,7 +10,6 @@ export const addArt = async (data) => {
   }
 }
 export const createCollection = async (data) => {
-  console.log(data)
   try {
     const response = await Client.post('/collections', data)
     return response.data

@@ -1,9 +1,4 @@
-import { useState } from 'react'
-
 const EditArt = ({ hadleEditChange, hadleEditSubmit, setUpdate, art }) => {
-  const handleAddCollection = () => {}
-  const hadleChange = () => {}
-
   return (
     <div className="NameDescFormDiv">
       <form action="" onSubmit={hadleEditSubmit}>

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { LogInUser } from '../services/Auth'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Login = ({ setUser }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' })
@@ -16,7 +16,6 @@ const Login = ({ setUser }) => {
     const payload = await LogInUser(formValues)
 
     setFormValues({ email: '', password: '' })
-    console.log(payload)
     setUser(payload)
     if (payload) {
       navigate(`/user/${payload.id}`)

@@ -1,24 +1,17 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import Client from '../services/api'
+import { useState } from 'react'
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck'
-const EditBio = ({ user, setChangedBio, handleSubmit, profile }) => {
+const EditBio = ({ handleSubmit, profile }) => {
   const [editBioForm, setEditBioForm] = useState({
     name: profile.name,
     bio: profile.bio
   })
-  let { id } = useParams()
   const onSubmit = async (event) => {
     event.preventDefault()
     await handleSubmit(editBioForm)
   }
-  // useEffect(() => {
-  //   handleSubmit()
-  // }, [])
 
   const hadleChange = (event) => {
     setEditBioForm({ ...editBioForm, [event.target.name]: event.target.value })
-    console.log(event.target.value)
   }
 
   return (

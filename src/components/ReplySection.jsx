@@ -3,7 +3,7 @@ import Client from '../services/api'
 import SendIcon from '@mui/icons-material/Send'
 import { Avatar } from '@mui/material'
 
-const ReplySection = ({ comment, user, setReplayed, id }) => {
+const ReplySection = ({ comment, user, setReplayed }) => {
   let replyRef = useRef('')
 
   const reply = async () => {
@@ -22,8 +22,8 @@ const ReplySection = ({ comment, user, setReplayed, id }) => {
     <div hidden>
       {user ? (
         <div className="replay-input">
-          <input  placeholder='reply' type="text" ref={replyRef} /><SendIcon onClick={reply} />
-          
+          <input placeholder="reply" type="text" ref={replyRef} />
+          <SendIcon onClick={reply} />
         </div>
       ) : (
         <></>

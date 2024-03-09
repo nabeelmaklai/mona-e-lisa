@@ -1,5 +1,5 @@
 import { showArt } from '../services/Get'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import Client from '../services/api'
 import AddToCollection from '../components/AddToCollection'
@@ -8,11 +8,11 @@ import EditArt from '../components/EditArt'
 import CollectionsIcon from '@mui/icons-material/Collections'
 import SendIcon from '@mui/icons-material/Send'
 import ReplySection from '../components/ReplySection'
-
 import EditIcon from '@mui/icons-material/Edit'
 import ReplyIcon from '@mui/icons-material/Reply'
 import { Avatar } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
+
 const ShowArt = ({ user }) => {
   const [update, setUpdate] = useState(false)
 
@@ -79,27 +79,20 @@ const ShowArt = ({ user }) => {
   const handleDeleteComment = async (e) => {
     e.preventDefault()
     const commentToDelete = `/arts/${id}/comments/${deleteCommentId}`
-    // console.log('This is the handleDeleteComment', commentToDelete)
     await Client.delete(commentToDelete)
     setDeleted(true)
-    // setCommented(true)
   }
 
   const handleEditClick = () => {
-    console.log('It works')
     editArt ? setEditArt(false) : setEditArt(!false)
-    // navigate('/arts/edit')
   }
   const hadleEditChange = (event) => {
     setEditArtForm({ ...editArtForm, [event.target.name]: event.target.value })
-    // console.log(event.target.value)
   }
   const hadleEditSubmit = async (e) => {
     e.preventDefault()
     await Client.put(`/arts/${id}`, editArtForm)
     setUpdate(true)
-
-    // console.log('This is the handle submit button for the edits')
   }
 
   const showReplies = (e) => {
@@ -110,8 +103,6 @@ const ShowArt = ({ user }) => {
 
   return art ? (
     <div className="show-art">
-      {/* <h5>Name: {art.userId.name}</h5> */}
-
       {user ? (
         art.userId._id === user.id && (
           <div className="EditBtnDiv">
@@ -141,53 +132,52 @@ const ShowArt = ({ user }) => {
         <div className="underTheImgArt">
           {user && <LikeButton user={user} art={art} />}
 
-          {/* <div className="add-to-collection"> */}
           {user && <CollectionsIcon onClick={showAddCollection} />}
 
           {showCollection && <AddToCollection user={user} artId={id} />}
-          {/* </div> */}
         </div>
-        {/* <p>hello{art.userId._id}</p> */}
         <p>
           <b>{art.userId.name}</b> {art.description}
         </p>
-        </div>
+      </div>
+      <section className="body">
+        <div className="scroll-div">
+          <div className="scroll-object">
+            <div className="scroll-bg">
+              {user && (
+                <div className="commentsInput">
+                  {' '}
+                  <input
+                    placeholder="Write a comment"
+                    type="text"
+                    ref={commentRef.body}
+                  />
+                  <input
+                    type="hidden"
+                    hidden
+                    ref={commentRef.userId}
+                    value={user.id}
+                  />{' '}
+                  <SendIcon onClick={addComment} />
+                </div>
+              )}
+              {art.commentIds.map((comment) => (
+                <div className="commentDiv" key={comment._id}>
+                  <div className="post__headerAuthor">
+                    <Avatar style={{ width: '21px', height: '21px' }} />
+                    <h4 className="h2">{comment.userId.name}</h4>:{' '}
+                    {comment.body}
+                  </div>
 
-  <section className='body'>
-      {/* <div className="comments-section "> */}
-        <div className='scroll-div'>
-        <div className='scroll-object'>
-        <div className='scroll-bg'>
-        {user && (
-          <div className="commentsInput">
-            {' '}
-            <input placeholder='Write a comment' type="text" ref={commentRef.body} />
-            <input 
-              type="hidden"
-              hidden
-              ref={commentRef.userId}
-              value={user.id}
-            />{' '}
-            <SendIcon onClick={addComment} />
-          </div>
-        )}
-        {art.commentIds.map((comment) => (
-          <div className="commentDiv" key={comment._id}>
-            <div className="post__headerAuthor">
-              <Avatar style={{ width: '21px', height: '21px' }} />
-              <h4 className="h2">{comment.userId.name}</h4>: {comment.body}
-            </div>
-            
-            <div>
-              <ReplyIcon onClick={showReplies} />
+                  <div>
+                    <ReplyIcon onClick={showReplies} />
 
-              <ReplySection
-                comment={comment}
-                user={user}
-                setReplayed={setReplayed}
-                id={id}
-              />
-
+                    <ReplySection
+                      comment={comment}
+                      user={user}
+                      setReplayed={setReplayed}
+                      id={id}
+                    />
                   </div>
                   {user ? (
                     comment.userId._id === user.id && (
@@ -199,32 +189,22 @@ const ShowArt = ({ user }) => {
                               handleDeleteClick(comment._id)
                             }}
                           />
-                          
                         </button>
                       </form>
-                      
-                      
                     )
                   ) : (
                     <></>
                   )}
                 </div>
-                
               ))}
-
             </div>
           </div>
         </div>
-       
       </section>
     </div>
-   
   ) : (
-     
-    <></> 
-    )
-   
- 
+    <></>
+  )
 }
 
 export default ShowArt

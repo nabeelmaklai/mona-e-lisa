@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { createCollection } from '../services/Post'
 import { useNavigate } from 'react-router-dom'
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck'
@@ -12,7 +12,6 @@ const AddCollection = ({ user, setAddCollectionForm }) => {
   const handleAddCollection = async (event) => {
     event.preventDefault()
     setAddCollectionForm(false)
-    console.log('Done')
     await createCollection({
       name: addCollection.name,
       description: addCollection.description,
@@ -27,7 +26,6 @@ const AddCollection = ({ user, setAddCollectionForm }) => {
       ...addCollection,
       [event.target.name]: event.target.value
     })
-    console.log('handle change in the add collection componenet')
   }
   return (
     <div>
